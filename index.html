@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>緑ヶ丘市立 楠ヶ丘中学校 公式サイト</title>
+    <title>1年6組 公式サイト</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -93,11 +93,10 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Branding with Emblem Canvas -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
-                    <canvas id="headerEmblemCanvas" width="50" height="50" class="rounded-full bg-brand-dark/40 border border-brand-accent/30"></canvas>
+                    <canvas id="headerEmblemCanvas" width="44" height="44" class="rounded-full bg-brand-dark/30 border border-brand-accent/20"></canvas>
                     <div>
-                        <span class="block text-xs font-medium text-brand-gold tracking-widest">MIDORIGAOKA JUNIOR HIGH SCHOOL</span>
-                        <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white flex items-center gap-2">
-                            緑ヶ丘市立 楠ヶ丘中学校
+                        <h1 class="text-lg sm:text-xl font-bold tracking-wide text-white flex items-center gap-2">
+                            1年6組 公式サイト
                         </h1>
                     </div>
                 </div>
@@ -105,22 +104,22 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
                     <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5 active-nav" data-page="home">
-                        <i class="fa-solid fa-house text-brand-gold"></i> トップ
+                        <i class="fa-solid fa-house text-brand-gold text-xs"></i> トップ
                     </button>
                     <button onclick="navigateTo('about')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="about">
-                        <i class="fa-solid fa-school text-brand-gold"></i> 学校紹介
+                        <i class="fa-solid fa-school text-brand-gold text-xs"></i> クラス紹介
                     </button>
                     <button onclick="navigateTo('events')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="events">
-                        <i class="fa-solid fa-calendar-days text-brand-gold"></i> 行事予定
+                        <i class="fa-solid fa-calendar-days text-brand-gold text-xs"></i> 行事予定
                     </button>
                     <button onclick="navigateTo('clubs')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="clubs">
-                        <i class="fa-solid fa-basketball text-brand-gold"></i> 部活動
+                        <i class="fa-solid fa-basketball text-brand-gold text-xs"></i> 部活動
                     </button>
                     <button onclick="navigateTo('access')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="access">
-                        <i class="fa-solid fa-location-dot text-brand-gold"></i> アクセス
+                        <i class="fa-solid fa-location-dot text-brand-gold text-xs"></i> アクセス
                     </button>
-                    <button onclick="navigateTo('admin')" class="nav-btn px-3 py-2 rounded-md transition duration-150 bg-brand-dark/50 hover:bg-brand-accent text-white flex items-center gap-1.5 border border-brand-accent/40" data-page="admin">
-                        <i class="fa-solid fa-user-lock text-brand-gold"></i> サイト統合管理
+                    <button onclick="navigateTo('admin')" class="nav-btn px-3 py-2 rounded-md transition duration-150 bg-brand-dark/40 hover:bg-brand-accent text-white flex items-center gap-1.5 border border-white/10" data-page="admin">
+                        <i class="fa-solid fa-user-lock text-brand-gold text-xs"></i> 管理
                     </button>
                 </nav>
 
@@ -139,7 +138,7 @@
                 <i class="fa-solid fa-house w-6 text-brand-gold"></i> トップ
             </button>
             <button onclick="navigateTo('about')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
-                <i class="fa-solid fa-school w-6 text-brand-gold"></i> 学校紹介
+                <i class="fa-solid fa-school w-6 text-brand-gold"></i> クラス紹介
             </button>
             <button onclick="navigateTo('events')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
                 <i class="fa-solid fa-calendar-days w-6 text-brand-gold"></i> 行事予定
@@ -162,24 +161,21 @@
         <!-- ==================== HOME PAGE ==================== -->
         <div id="page-home" class="page-content active">
             <!-- Hero Canvas Area -->
-            <div class="relative bg-brand-dark overflow-hidden text-white min-h-[380px] sm:min-h-[460px] flex items-center justify-center">
-                <canvas id="heroCanvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
-                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto py-12">
-                    <span class="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-gold/40 text-brand-gold text-xs sm:text-sm font-semibold rounded-full mb-4 backdrop-blur-md">
-                        伝統と創造 ・ 自律と共生
-                    </span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 drop-shadow-md">
+            <div class="relative bg-brand-dark overflow-hidden text-white min-h-[300px] sm:min-h-[360px] flex items-center justify-center">
+                <canvas id="heroCanvas" class="absolute inset-0 w-full h-full object-cover opacity-80"></canvas>
+                <div class="relative z-10 text-center px-4 max-w-3xl mx-auto py-10">
+                    <h2 class="text-2xl sm:text-4xl font-bold tracking-tight mb-3">
                         自ら学び、心豊かに、たくましく
                     </h2>
-                    <p class="text-base sm:text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed drop-shadow">
-                        緑ヶ丘市立 楠ヶ丘中学校は、豊かな自然と歴史に育まれた環境の中で、生徒一人ひとりの可能性を開花させる教育を行っています。
+                    <p class="text-sm sm:text-base text-emerald-100/90 max-w-xl mx-auto leading-relaxed">
+                        福岡市立内浜中学校 1年6組の学級活動や行事予定、各種お知らせを発信する公式学級WEBサイトです。
                     </p>
-                    <div class="mt-8 flex flex-wrap justify-center gap-4">
-                        <button onclick="navigateTo('about')" class="px-6 py-3 bg-brand-gold hover:bg-yellow-500 text-gray-900 font-bold rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5">
-                            学校案内を見る
+                    <div class="mt-6 flex flex-wrap justify-center gap-3">
+                        <button onclick="navigateTo('about')" class="px-5 py-2.5 bg-brand-gold hover:bg-yellow-500 text-gray-900 font-bold rounded-lg text-sm shadow transition duration-200">
+                            クラス紹介を見る
                         </button>
-                        <button onclick="navigateTo('events')" class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-md border border-white/20 transition duration-200">
-                            年間行事予定
+                        <button onclick="navigateTo('events')" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg text-sm backdrop-blur-sm border border-white/20 transition duration-200">
+                            行事予定
                         </button>
                     </div>
                 </div>
@@ -195,7 +191,7 @@
                             <h3 class="text-2xl font-bold text-brand flex items-center gap-2">
                                 <i class="fa-solid fa-bullhorn text-brand-accent"></i> お知らせ・新着情報
                             </h3>
-                            <span class="text-xs text-gray-500">保護者・地域の皆様へ</span>
+                            <span class="text-xs text-gray-500">保護者・クラスの皆様へ</span>
                         </div>
 
                         <!-- News Container -->
@@ -206,13 +202,13 @@
 
                     <!-- Sidebar Links & Information (Right 1 column) -->
                     <div class="space-y-6">
-                        <!-- Emergency Banner -->
-                        <div class="bg-amber-50 border-l-4 border-brand-accent p-4 rounded-r-lg shadow-sm">
+                        <!-- Emergency Banner Dynamic Container -->
+                        <div id="emergencyBannerContainer" class="bg-amber-50 border-l-4 border-brand-accent p-4 rounded-r-lg shadow-sm">
                             <div class="flex items-start">
                                 <i class="fa-solid fa-triangle-exclamation text-brand-accent text-xl mt-0.5 mr-3"></i>
                                 <div>
-                                    <h4 class="font-bold text-amber-900 text-sm">緊急連絡・台風等の対応</h4>
-                                    <p class="text-xs text-amber-800 mt-1 leading-relaxed">
+                                    <h4 class="font-bold text-amber-900 text-sm" id="view-emergency-title">緊急連絡・台風等の対応</h4>
+                                    <p class="text-xs text-amber-800 mt-1 leading-relaxed whitespace-pre-wrap" id="view-emergency-text">
                                         気象警報発表時および非常災害時の登下校判断につきましては「保護者の手引き」をご確認ください。
                                     </p>
                                 </div>
@@ -230,7 +226,7 @@
                                     <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand"></i>
                                 </button>
                                 <button onclick="navigateTo('clubs')" class="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-brand hover:bg-emerald-50/50 transition flex items-center justify-between group">
-                                    <span class="text-sm font-medium text-gray-700 group-hover:text-brand"><i class="fa-solid fa-medal mr-2 text-brand"></i>部活動の実績・活動方針</span>
+                                    <span class="text-sm font-medium text-gray-700 group-hover:text-brand"><i class="fa-solid fa-medal mr-2 text-brand"></i>部活動・係活動方針</span>
                                     <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand"></i>
                                 </button>
                                 <button onclick="navigateTo('access')" class="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-brand hover:bg-emerald-50/50 transition flex items-center justify-between group">
@@ -242,15 +238,15 @@
 
                         <!-- School Info Card -->
                         <div class="bg-brand text-white p-6 rounded-xl shadow-md">
-                            <h4 class="font-bold text-lg mb-2 text-brand-gold">緑ヶ丘市立 楠ヶ丘中学校</h4>
-                            <p class="text-xs text-emerald-100 leading-relaxed mb-4">
-                                〒000-0000<br>
-                                緑ヶ丘市楠ヶ丘1丁目2番3号<br>
-                                TEL: 000-000-0000 / FAX: 000-000-0001
+                            <h4 class="font-bold text-lg mb-2 text-brand-gold" id="side-school-name">1年6組公式サイト</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed mb-4" id="side-school-address">
+                                〒819-0005<br>
+                                福岡県福岡市西区小戸2丁目4-1<br>
+                                TEL: 092-000-0000
                             </p>
                             <div class="text-xs bg-brand-dark/60 p-3 rounded-lg border border-brand-light">
-                                <p class="font-semibold text-brand-gold mb-1"><i class="fa-regular fa-clock mr-1"></i> 業務時間</p>
-                                <p class="text-emerald-100">平日 8:00 ～ 18:00（祝定休）</p>
+                                <p class="font-semibold text-brand-gold mb-1"><i class="fa-regular fa-clock mr-1"></i> 業務・受付時間</p>
+                                <p class="text-emerald-100">平日 8:00 ～ 17:00（土日祝休）</p>
                             </div>
                         </div>
                     </div>
@@ -519,7 +515,7 @@
                         <h2 class="text-2xl font-bold flex items-center gap-2">
                             <i class="fa-solid fa-user-gear text-brand-gold"></i> サイト総合管理コンソール
                         </h2>
-                        <p class="text-emerald-100 text-xs mt-1">お知らせ・学校案内・行事・部活動の総合編集・リアルタイム更新</p>
+                        <p class="text-emerald-100 text-xs mt-1">お知らせ・緊急連絡・クラス案内・行事・部活動の総合編集</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <button id="resetDataBtn" onclick="resetAllData()" class="hidden px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded transition">
@@ -539,14 +535,14 @@
                         <div class="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
                             <i class="fa-solid fa-lock"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900">教職員認証パネル</h3>
-                        <p class="text-xs text-gray-500 mt-1">管理者アカウントでログインしてください。</p>
+                        <h3 class="text-xl font-bold text-gray-900">管理者認証パネル</h3>
+                        <p class="text-xs text-gray-500 mt-1">ログインアカウント情報を入力してください。</p>
                     </div>
 
                     <form onsubmit="handleLogin(event)" class="space-y-4">
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-1">ユーザー名</label>
-                            <input type="text" id="adminUser" required placeholder="teacher" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand focus:border-transparent outline-none">
+                            <input type="text" id="adminUser" required placeholder="ユーザー名" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand focus:border-transparent outline-none">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-1">パスワード</label>
@@ -557,11 +553,6 @@
                             ログイン
                         </button>
                     </form>
-                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 text-[11px] text-gray-500 space-y-0.5">
-                        <p class="font-bold text-gray-700">デモ用アカウント:</p>
-                        <p>ユーザー名: <code class="text-brand font-bold">teacher</code></p>
-                        <p>パスワード: <code class="text-brand font-bold">Miyama2026</code></p>
-                    </div>
                 </div>
 
                 <!-- Admin Dashboard (Tabs for editing all site content) -->
@@ -572,8 +563,11 @@
                         <button onclick="switchAdminTab('news')" class="admin-tab-btn px-4 py-2 bg-brand text-white rounded-lg text-xs font-bold shadow-sm transition" data-tab="news">
                             <i class="fa-solid fa-bullhorn mr-1"></i> お知らせ管理
                         </button>
+                        <button onclick="switchAdminTab('emergency')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="emergency">
+                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> 緊急連絡・台風対応
+                        </button>
                         <button onclick="switchAdminTab('about')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="about">
-                            <i class="fa-solid fa-school mr-1"></i> 学校紹介の編集
+                            <i class="fa-solid fa-school mr-1"></i> クラス紹介の編集
                         </button>
                         <button onclick="switchAdminTab('events')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="events">
                             <i class="fa-solid fa-calendar-days mr-1"></i> 行事予定の編集
@@ -584,6 +578,32 @@
                         <button onclick="switchAdminTab('access')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="access">
                             <i class="fa-solid fa-location-dot mr-1"></i> アクセス・連絡先の編集
                         </button>
+                    </div>
+
+                    <!-- NEW TAB: EMERGENCY BANNER MANAGEMENT -->
+                    <div id="adminTab-emergency" class="admin-tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation text-brand-gold"></i> 緊急連絡・台風等休校バナーの設定
+                            </h3>
+                            <form onsubmit="saveEmergencyConfig(event)" class="space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="edit-emergency-active" class="w-4 h-4 text-brand rounded focus:ring-brand">
+                                    <label for="edit-emergency-active" class="text-sm font-bold text-gray-800">トップページに緊急連絡バナーを表示する</label>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">バナー見出し</label>
+                                    <input type="text" id="edit-emergency-title" placeholder="【緊急】台風接近に伴う臨時休校のお知らせ" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">詳細本文内容</label>
+                                    <textarea id="edit-emergency-text" rows="4" placeholder="台風○号の接近に伴い、明日○月○日は終日臨時休校となります..." class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                                </div>
+                                <button type="submit" class="px-6 py-2.5 bg-brand hover:bg-brand-dark text-white font-bold rounded-lg shadow text-sm transition">
+                                    緊急連絡の設定を保存・反映
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                     <!-- 1. TAB: NEWS MANAGEMENT -->
@@ -886,15 +906,15 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white border-t border-brand-light mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+    <footer class="bg-brand-dark text-white border-t border-brand-light/30 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
                 <div>
-                    <h3 class="text-lg font-bold text-white tracking-wide" id="footer-school-name">緑ヶ丘市立 楠ヶ丘中学校</h3>
-                    <p class="text-xs text-emerald-200/80 mt-1" id="footer-school-contact">〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号 | TEL: 000-000-0000</p>
+                    <h3 class="text-base font-bold text-white" id="footer-school-name">福岡市立内浜中学校 1年6組</h3>
+                    <p class="text-xs text-emerald-200/70 mt-0.5" id="footer-school-contact">〒819-0005 福岡県福岡市西区小戸2丁目4-1 | TEL: 092-000-0000</p>
                 </div>
-                <div class="text-xs text-emerald-200/60">
-                    <p>&copy; Midorigaoka Municipal Kusugaoka Junior High School. All rights reserved.</p>
+                <div class="text-[11px] text-emerald-200/50">
+                    <p>&copy; Class 1-6 Website. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -904,70 +924,138 @@
     <script>
         // Default Sample Data Structure
         const defaultSiteData = {
+            emergency: {
+                active: true,
+                title: '緊急連絡・台風等の対応',
+                text: '気象警報発表時および非常災害時の登下校判断につきましては「保護者の手引き」をご確認ください。台風接近時等はトップページにも案内を掲載します。'
+            },
             news: [
                 {
                     id: 1,
                     date: '2026.05.01',
                     category: '全校行事',
-                    title: '令和8年度 第1回授業参観およびPTA総会のご案内',
-                    content: '5月18日(金)に授業参観およびPTA総会を実施いたします。保護者の皆様のご出席を心よりお待ちしております。\n\n詳細なプログラムおよび提出書類については、以下のリンクよりPDF資料をご確認ください。\nhttps://example.com/pta-guidance.pdf'
+                    title: '令和8年度 第1回授業参観および学級懇談会のご案内',
+                    content: '5月18日(金)に1年6組の授業参観および懇談会を実施いたします。保護者の皆様のご出席を心よりお待ちしております。\n\n詳細プログラムについては以下のリンクよりご確認ください。\nhttps://example.com/pta-guidance.pdf'
                 },
                 {
                     id: 2,
                     date: '2026.04.20',
                     category: 'お知らせ',
-                    title: '【重要】クールビズ（軽装登校）の実施について',
-                    content: '5月7日(月)より夏季の軽装登校（クールビズ）期間といたします。各自体調管理に配慮した服装を心がけてください。'
+                    title: '【1年6組】学級目標決定と夏服移行期間について',
+                    content: '1年6組の学級目標が決定しました！また、5月7日(月)より夏服への移行期間となります。各自体調管理に配慮した服装を心がけてください。'
                 }
             ],
             about: {
-                principalTitle: '「豊かな心と自立の志を育む」',
-                principalName: '第14代 校長  山田 太郎',
-                principalMsg: '緑ヶ丘市立楠ヶ丘中学校のホームページをご覧いただきありがとうございます。\n本校は創立以来、「自主・友愛・創造」の校訓のもと、地域に根ざした教育を推進してまいりました。変化の激しい現代社会において、自ら考え判断し、他者と協働して課題を解決する力を育むことが重要です。\n\n生徒一人ひとりが安心して学び、目標に向かって挑戦できる学校環境を整え、信頼される学校づくりを行ってまいります。',
-                creed1: '自ら目標を掲げ、主体的に考え行動し、自らの言動に責任を持つ態度を養います。',
-                creed2: '互いの個性を尊重し合い、思いやりの心を持って共に高め合う人間関係を築きます。',
-                creed3: '真理を求めて意欲的に学び、未来を切り拓く豊かな感性と創造力を培います。',
-                infoName: '緑ヶ丘市立 楠ヶ丘中学校',
-                infoFounder: '緑ヶ丘市教育委員会',
-                infoStudents: '全校生徒 450名（各学年 4学級・支援学級2）',
-                infoStaff: '35名',
-                infoSong: '作詞：緑ヶ丘 太郎 / 作曲：楠 華子（「緑の丘にそびえたつ 大楠の木のように…」）'
+                principalTitle: '「互いを認め合い、ともに高め合う1年6組」',
+                principalName: '1年6組 担任  西田 健',
+                principalMsg: '福岡市立内浜中学校 1年6組のホームページへようこそ！\n中学校生活のスタートを切った生徒たちが、日々の学習や行事、部活動を通してたくましく成長しています。明るく元気に、互いの違いを認め合いながら高め合える学級を目指しています。\n\n行事の様子や連絡事項を随時配信してまいりますので、保護者の皆様のご理解とご協力をよろしくお願いいたします。',
+                creed1: '挨拶と感謝の気持ちを忘れず、進んで行動します。',
+                creed2: '仲間を思いやり、全員が安心して過ごせる学級をつくります。',
+                creed3: '自分の目標に向かって粘り強く学習や部活動に取り組みます。',
+                infoName: '福岡市立内浜中学校 1年6組',
+                infoFounder: '福岡市教育委員会',
+                infoStudents: '1年6組 生徒数 35名（男子 18名・女子 17名）',
+                infoStaff: '担任 1名 / 副担任 1名',
+                infoSong: '内浜中学校 校歌（「玄界灘の風うけて 明るい笑顔ひかる窓…」）'
             },
             events: {
-                term1: '・4月: 入学式 / 始業式\n・5月: 修学旅行 (3年)\n・6月: 体育祭 / 期末テスト\n・7月: 中総体 / 終業式',
-                term2: '・8月: 始業式 / 実力テスト\n・9月: 合唱コンクール・文化祭\n・10月: 職場体験学習 (2年)\n・11月: 期末テスト / 三者面談',
-                term3: '・1月: 始業式 / 新入生説明会\n・2月: 学年末テスト\n・3月: 卒業証書授与式 / 修了式',
+                term1: '・4月: 入学式 / 対面式\n・5月: 自然教室 (1年) / 体力テスト\n・6月: クラス合唱練習 / 期末テスト\n・7月: 中総体応援 / 終業式',
+                term2: '・8月: 始業式 / 課題テスト\n・9月: 体育祭・学級対抗リレー\n・10月: 文化祭・合唱コンクール\n・11月: 期末テスト / 三者面談',
+                term3: '・1月: 始業式 / 実力テスト\n・2月: 立志の誓い / 学年末テスト\n・3月: クラスクラスマッチ / 修了式',
                 list: [
-                    { id: 101, date: '5/10', day: '金', title: '全校体力テスト', target: '全学年', note: '体操服着用' },
-                    { id: 102, date: '5/15', day: '水', title: '修学旅行事前学習', target: '3年生', note: '5-6時間目' },
+                    { id: 101, date: '5/10', day: '金', title: '全校体力テスト', target: '1年6組', note: '体操服着用' },
+                    { id: 102, date: '5/15', day: '水', title: '自然教室事前学習', target: '1学年全クラス', note: '5-6時間目' },
                     { id: 103, date: '5/22', day: '水', title: '生徒会総会', target: '全学年', note: '体育館にて実施' },
-                    { id: 104, date: '5/28', day: '火', title: '中間校内テスト (1日目)', target: '全学年', note: '部活動停止期間' }
+                    { id: 104, date: '5/28', day: '火', title: '中間校内テスト (1日目)', target: '1年6組', note: '部活動停止期間' }
                 ]
             },
             clubs: [
-                { id: 201, category: 'sports', name: 'サッカー部', activity: '活動: 週5日 / 平日・土曜', desc: '「県大会出場」を目指し、グラウンドで日々練習に励んでいます。チームワークとマナーを重視しています。', icon: 'fa-futbol', bg: 'bg-emerald-800' },
-                { id: 202, category: 'sports', name: 'バスケットボール部', activity: '活動: 週5日 / 体育館', desc: '男子・女子ともに体育館で基礎技術と素早いパスワークを磨いています。', icon: 'fa-basketball', bg: 'bg-amber-800' },
-                { id: 203, category: 'sports', name: '野球部', activity: '活動: 週5日 / 第1グラウンド', desc: '礼儀と声を大切にし、地区大会優勝を目標に日々白球を追いかけています。', icon: 'fa-baseball', bg: 'bg-teal-800' },
-                { id: 204, category: 'cultural', name: '吹奏楽部', activity: '活動: 週5日 / 音楽室', desc: 'コンクールでの金賞受賞、および地域・学校行事での演奏会に向けてアンサンブルを育んでいます。', icon: 'fa-music', bg: 'bg-purple-900' },
-                { id: 205, category: 'cultural', name: '美術・工芸部', activity: '活動: 週3日 / 美術室', desc: '絵画、立体工作、デジタルイラストなど多様な作品を制作し、文化祭等で展覧会を行っています。', icon: 'fa-paint-brush', bg: 'bg-rose-800' },
-                { id: 206, category: 'cultural', name: 'パソコン・科学部', activity: '活動: 週3日 / PC教室', desc: 'プログラミング、ロボット工作、科学実験など興味関心に応じた探究活動を行っています。', icon: 'fa-laptop-code', bg: 'bg-indigo-900' }
+                { id: 201, category: 'sports', name: 'サッカー部', activity: '活動: 週5日 / グラウンド', desc: '内浜中サッカー部。挨拶とチームワークを第一に日々の練習に取り組んでいます。', icon: 'fa-futbol', bg: 'bg-emerald-800' },
+                { id: 202, category: 'sports', name: 'バスケットボール部', activity: '活動: 週5日 / 体育館', desc: '男子・女子ともに体育館で基礎技術と素早い走力を磨いています。', icon: 'fa-basketball', bg: 'bg-amber-800' },
+                { id: 203, category: 'sports', name: '陸上競技部', activity: '活動: 週5日 / グラウンド', desc: '自己ベスト更新を目指し、短距離・長距離・跳躍各種目で汗を流しています。', icon: 'fa-person-running', bg: 'bg-teal-800' },
+                { id: 204, category: 'cultural', name: '吹奏楽部', activity: '活動: 週5日 / 音楽室', desc: 'コンクール金賞や校内各種行事での演奏会に向けてハーモニーを追求しています。', icon: 'fa-music', bg: 'bg-purple-900' },
+                { id: 205, category: 'cultural', name: '美術部', activity: '活動: 週3日 / 美術室', desc: '絵画、ポスター制作、イラストなど個性を活かした作品づくりに励んでいます。', icon: 'fa-paint-brush', bg: 'bg-rose-800' },
+                { id: 206, category: 'cultural', name: 'パソコン部', activity: '活動: 週3日 / PC教室', desc: 'タイピング、タイピングコンテスト、プログラミングなどのスキル向上を目指します。', icon: 'fa-laptop-code', bg: 'bg-indigo-900' }
             ],
             access: {
-                bus: '緑ヶ丘市営バス「楠ヶ丘中学校前」バス停下車 徒歩1分',
-                train: '緑ヶ丘電鉄「楠ヶ丘駅」北口より徒歩約12分',
-                car: '敷地内に来客用駐車場（5台）がございます。正門よりお入りください。',
-                address: '〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号',
-                tel: '電話番号: 000-000-0000',
-                fax: 'FAX番号: 000-000-0001'
+                bus: '西鉄バス「内浜中学校前」バス停下車 徒歩2分',
+                train: 'JR筑肥線・地下鉄空港線「姪浜駅」南口より徒歩約10分',
+                car: '学校正門よりお入りいただき、来客用駐車場をご利用ください。',
+                address: '〒819-0005 福岡県福岡市西区小戸2丁目4-1',
+                tel: '電話番号: 092-000-0000',
+                fax: 'FAX番号: 092-000-0001'
             }
         };
 
+        // 安全に LocalStorage を読み込む関数
+        function loadSavedData() {
+            try {
+                const saved = localStorage.getItem('uchihama_1_6_data');
+                return saved ? JSON.parse(saved) : defaultSiteData;
+            } catch (e) {
+                return defaultSiteData;
+            }
+        }
+
         // Global Dynamic State
-        let siteData = JSON.parse(localStorage.getItem('kusugaoka_full_data')) || defaultSiteData;
+        let siteData = loadSavedData();
         let isLoggedIn = false;
 
+        // Admin Auth Handler
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (user === 'taiyakiya' && pass === 'Taiyakiya2026') {
+                isLoggedIn = true;
+                errorEl.classList.add('hidden');
+                document.getElementById('adminLoginBox').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                document.getElementById('resetDataBtn').classList.remove('hidden');
+                document.getElementById('logoutBtn').classList.remove('hidden');
+                populateAdminForms();
+                renderAllPages();
+            } else {
+                errorEl.textContent = 'ユーザー名またはパスワードが正しくありません。';
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isLoggedIn = false;
+            document.getElementById('adminLoginBox').classList.remove('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('resetDataBtn').classList.add('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-700');
+            });
+
+            const targetTab = document.getElementById(`adminTab-${tabName}`);
+            if (targetTab) targetTab.classList.remove('hidden');
+
+            const activeBtn = document.querySelector(`.admin-tab-btn[data-tab="${tabName}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-gray-100', 'text-gray-700');
+                activeBtn.classList.add('bg-brand', 'text-white');
+            }
+        }
+
         function saveSiteData() {
-            localStorage.setItem('kusugaoka_full_data', JSON.stringify(siteData));
+            try {
+                localStorage.setItem('uchihama_1_6_data', JSON.stringify(siteData));
+            } catch (e) {
+                console.warn('LocalStorage save failed', e);
+            }
             renderAllPages();
         }
 
@@ -980,48 +1068,15 @@
             });
         }
 
-        // News Modal Trigger
-        function openNewsModal(id) {
-            const item = siteData.news.find(n => n.id === id);
-            if (!item) return;
-
-            document.getElementById('modalCategory').textContent = item.category;
-            document.getElementById('modalDate').textContent = item.date;
-            document.getElementById('modalTitle').textContent = item.title;
-            
-            const linkedContent = autoLink(item.content);
-            document.getElementById('modalContent').innerHTML = linkedContent;
-
-            document.getElementById('newsModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeNewsModal() {
-            document.getElementById('newsModal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeNewsModal();
-        });
-
-        // Init App
-        window.addEventListener('DOMContentLoaded', () => {
-            renderHeaderEmblem();
-            initHeroCanvas();
-            initCampusMapCanvas();
-            renderAllPages();
-        });
-
         // Main Render Dispatcher
         function renderAllPages() {
+            renderEmergencyBanner();
             renderNewsHome();
             renderAboutPage();
             renderEventsPage();
             renderClubsPage();
             renderAccessPage();
             
-            // Admin dynamic tables
             if (isLoggedIn) {
                 renderNewsAdmin();
                 renderEventsAdmin();
@@ -1029,39 +1084,45 @@
             }
         }
 
-        // Navigation SPA Switcher
-        function navigateTo(pageId) {
-            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active'));
-            const target = document.getElementById(`page-${pageId}`);
-            if (target) {
-                target.classList.add('active');
-            }
+        // Render Emergency Banner
+        function renderEmergencyBanner() {
+            const container = document.getElementById('emergencyBannerContainer');
+            if (!container) return;
+            const em = siteData.emergency || defaultSiteData.emergency;
 
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if (btn.dataset.page === pageId) {
-                    btn.classList.add('bg-brand-light');
-                } else {
-                    btn.classList.remove('bg-brand-light');
-                }
-            });
-
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (!mobileMenu.classList.contains('hidden')) {
-                toggleMobileMenu();
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            if (pageId === 'access') {
-                setTimeout(initCampusMapCanvas, 100);
+            if (em.active) {
+                container.classList.remove('hidden');
+                document.getElementById('view-emergency-title').textContent = em.title;
+                document.getElementById('view-emergency-text').textContent = em.text;
+            } else {
+                container.classList.add('hidden');
             }
         }
 
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
+        // Header Canvas Emblem
+        function renderHeaderEmblem() {
+            const canvas = document.getElementById('headerEmblemCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // ================= PAGE RENDERERS =================
+            ctx.beginPath();
+            ctx.arc(25, 25, 22, 0, Math.PI * 2);
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(25, 25, 14, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#1b4d3e';
+            ctx.font = 'bold 12px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('1-6', 25, 26);
+        }
 
         // Render About Page
         function renderAboutPage() {
@@ -1081,345 +1142,28 @@
             document.getElementById('view-info-song').textContent = a.infoSong;
 
             document.getElementById('footer-school-name').textContent = a.infoName;
+            document.getElementById('side-school-name').textContent = a.infoName;
         }
 
-        // Render Events Page
-        function renderEventsPage() {
-            const e = siteData.events;
-            document.getElementById('view-term-1').textContent = e.term1;
-            document.getElementById('view-term-2').textContent = e.term2;
-            document.getElementById('view-term-3').textContent = e.term3;
-
-            const listContainer = document.getElementById('view-event-list');
-            if (listContainer) {
-                listContainer.innerHTML = e.list.map(ev => `
-                    <tr class="hover:bg-gray-50">
-                        <td class="py-3 px-4 font-bold">${ev.date}</td>
-                        <td class="py-3 px-4 text-blue-600 font-semibold">${ev.day}</td>
-                        <td class="py-3 px-4 font-medium text-gray-900">${ev.title}</td>
-                        <td class="py-3 px-4">${ev.target}</td>
-                        <td class="py-3 px-4 text-xs text-amber-600 font-medium">${ev.note || '-'}</td>
-                    </tr>
-                `).join('');
-            }
-        }
-
-        // Render Clubs Page
-        function renderClubsPage() {
-            const sportsList = siteData.clubs.filter(c => c.category === 'sports');
-            const culturalList = siteData.clubs.filter(c => c.category === 'cultural');
-
-            const sportsContainer = document.getElementById('view-sports-clubs');
-            if (sportsContainer) {
-                sportsContainer.innerHTML = sportsList.map(c => `
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                        <div class="h-28 ${c.bg || 'bg-emerald-800'} relative flex items-center justify-center text-white">
-                            <i class="fa-solid ${c.icon || 'fa-running'} text-4xl opacity-40"></i>
-                            <span class="absolute bottom-2 left-4 font-bold text-base">${c.name}</span>
-                        </div>
-                        <div class="p-4 space-y-2">
-                            <p class="text-xs text-gray-600">${c.desc}</p>
-                            <span class="inline-block text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">${c.activity}</span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            const culturalContainer = document.getElementById('view-cultural-clubs');
-            if (culturalContainer) {
-                culturalContainer.innerHTML = culturalList.map(c => `
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-                        <div class="h-28 ${c.bg || 'bg-purple-900'} relative flex items-center justify-center text-white">
-                            <i class="fa-solid ${c.icon || 'fa-palette'} text-4xl opacity-40"></i>
-                            <span class="absolute bottom-2 left-4 font-bold text-base">${c.name}</span>
-                        </div>
-                        <div class="p-4 space-y-2">
-                            <p class="text-xs text-gray-600">${c.desc}</p>
-                            <span class="inline-block text-[11px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded">${c.activity}</span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // Render Access Page
-        function renderAccessPage() {
-            const acc = siteData.access;
-            document.getElementById('view-access-bus').textContent = acc.bus;
-            document.getElementById('view-access-train').textContent = acc.train;
-            document.getElementById('view-access-car').textContent = acc.car;
-
-            document.getElementById('view-contact-address').textContent = acc.address;
-            document.getElementById('view-contact-tel').textContent = acc.tel;
-            document.getElementById('view-contact-fax').textContent = acc.fax;
-
-            document.getElementById('footer-school-contact').textContent = `${acc.address} | ${acc.tel}`;
-        }
-
-        // News Home Feed
-        function renderNewsHome() {
-            const container = document.getElementById('homeNewsContainer');
-            if (!container) return;
-
-            if (siteData.news.length === 0) {
-                container.innerHTML = `<p class="text-gray-500 text-sm py-4">現在掲示中のお知らせはありません。</p>`;
-                return;
-            }
-
-            container.innerHTML = siteData.news.map(item => `
-                <div onclick="openNewsModal(${item.id})" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-brand hover:shadow-md transition cursor-pointer group relative">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs font-semibold text-gray-500"><i class="fa-regular fa-clock mr-1"></i>${item.date}</span>
-                            <span class="px-2.5 py-0.5 text-xs font-bold bg-brand/10 text-brand rounded-full">${item.category}</span>
-                        </div>
-                        <span class="text-xs font-semibold text-brand opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
-                            詳細を見る <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </span>
-                    </div>
-                    <h4 class="font-bold text-gray-900 text-base mb-2 group-hover:text-brand transition">${item.title}</h4>
-                    <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">${item.content}</p>
-                </div>
-            `).join('');
-        }
-
-        // ================= CANVASES =================
-
-        function renderHeaderEmblem() {
-            const canvas = document.getElementById('headerEmblemCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            ctx.beginPath();
-            ctx.arc(25, 25, 22, 0, Math.PI * 2);
-            ctx.strokeStyle = '#d97706';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-
-            ctx.fillStyle = '#f59e0b';
-            ctx.beginPath();
-            ctx.arc(25, 25, 14, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = '#1b4d3e';
-            ctx.font = 'bold 16px "Noto Sans JP", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('楠', 25, 26);
-        }
-
-        function initHeroCanvas() {
-            const canvas = document.getElementById('heroCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            function resize() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-            }
-            resize();
-            window.addEventListener('resize', resize);
-
-            const particles = Array.from({ length: 30 }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 4 + 2,
-                color: Math.random() > 0.4 ? 'rgba(42, 106, 87, 0.4)' : 'rgba(217, 119, 6, 0.3)',
-                vx: (Math.random() - 0.5) * 0.8,
-                vy: Math.random() * 0.6 + 0.3,
-                angle: Math.random() * Math.PI * 2,
-                vAngle: (Math.random() - 0.5) * 0.02
-            }));
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                const grad = ctx.createRadialGradient(
-                    canvas.width / 2, canvas.height / 2, 50,
-                    canvas.width / 2, canvas.height / 2, canvas.width
-                );
-                grad.addColorStop(0, '#1c4e3f');
-                grad.addColorStop(1, '#0f2922');
-                ctx.fillStyle = grad;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.angle += p.vAngle;
-
-                    if (p.y > canvas.height + 10) { p.y = -10; p.x = Math.random() * canvas.width; }
-                    if (p.x < -10) p.x = canvas.width + 10;
-                    if (p.x > canvas.width + 10) p.x = -10;
-
-                    ctx.save();
-                    ctx.translate(p.x, p.y);
-                    ctx.rotate(p.angle);
-                    ctx.fillStyle = p.color;
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, p.radius * 2, p.radius, 0, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.restore();
-                });
-                requestAnimationFrame(animate);
-            }
-            animate();
-        }
-
-        let mapHoveredBuilding = null;
-        function initCampusMapCanvas() {
-            const canvas = document.getElementById('campusMapCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            const buildings = [
-                { id: 'main', name: '本校舎 (Main Building)', x: 180, y: 80, w: 440, h: 90, color: '#1b4d3e', desc: '普通教室・職員室・図書室' },
-                { id: 'gym', name: '体育館 (Gymnasium)', x: 80, y: 220, w: 180, h: 130, color: '#d97706', desc: 'アリーナ・武道場' },
-                { id: 'ground', name: '第1グラウンド (Ground)', x: 300, y: 210, w: 320, h: 150, color: '#a7f3d0', desc: '陸上トラック・サッカー場', textColor: '#064e3b' },
-                { id: 'club', name: '部活動部室棟', x: 650, y: 120, w: 100, h: 220, color: '#2a6a57', desc: '部室・倉庫' }
-            ];
-
-            function drawMap() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#f0fdf4';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = '#e5e7eb';
-                ctx.fillRect(50, 180, 700, 20);
-                ctx.fillRect(270, 80, 20, 260);
-
-                ctx.fillStyle = '#4b5563';
-                ctx.fillRect(40, 170, 10, 40);
-
-                buildings.forEach(b => {
-                    const isHovered = mapHoveredBuilding === b.id;
-                    ctx.save();
-                    ctx.fillStyle = b.color;
-                    ctx.shadowBlur = isHovered ? 12 : 4;
-                    ctx.beginPath();
-                    ctx.roundRect(b.x, b.y, b.w, b.h, 8);
-                    ctx.fill();
-
-                    if (isHovered) {
-                        ctx.strokeStyle = '#f59e0b';
-                        ctx.lineWidth = 3;
-                        ctx.stroke();
-                    }
-
-                    ctx.fillStyle = b.textColor || '#ffffff';
-                    ctx.font = 'bold 14px "Noto Sans JP"';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    ctx.fillText(b.name, b.x + b.w/2, b.y + b.h/2);
-                    ctx.restore();
-                });
-
-                if (mapHoveredBuilding) {
-                    const target = buildings.find(b => b.id === mapHoveredBuilding);
-                    if (target) {
-                        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-                        ctx.beginPath();
-                        ctx.roundRect(target.x + 10, target.y - 35, 220, 30, 6);
-                        ctx.fill();
-
-                        ctx.fillStyle = '#ffffff';
-                        ctx.font = '12px "Noto Sans JP"';
-                        ctx.textAlign = 'left';
-                        ctx.fillText(`📍 ${target.desc}`, target.x + 20, target.y - 15);
-                    }
-                }
-            }
-
-            canvas.onmousemove = (e) => {
-                const rect = canvas.getBoundingClientRect();
-                const scaleX = canvas.width / rect.width;
-                const scaleY = canvas.height / rect.height;
-                const mx = (e.clientX - rect.left) * scaleX;
-                const my = (e.clientY - rect.top) * scaleY;
-
-                let found = null;
-                buildings.forEach(b => {
-                    if (mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {
-                        found = b.id;
-                    }
-                });
-
-                if (mapHoveredBuilding !== found) {
-                    mapHoveredBuilding = found;
-                    drawMap();
-                }
-            };
-
-            canvas.onmouseleave = () => {
-                mapHoveredBuilding = null;
-                drawMap();
-            };
-
-            drawMap();
-        }
-
-        // ================= ADMIN & INTEGRATED CONTENT EDITING =================
-
-        function switchAdminTab(tabName) {
-            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-                if (btn.dataset.tab === tabName) {
-                    btn.classList.add('bg-brand', 'text-white');
-                    btn.classList.remove('bg-gray-100', 'text-gray-700');
-                } else {
-                    btn.classList.remove('bg-brand', 'text-white');
-                    btn.classList.add('bg-gray-100', 'text-gray-700');
-                }
-            });
-
-            document.querySelectorAll('.admin-tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            document.getElementById(`adminTab-${tabName}`).classList.remove('hidden');
-        }
-
-        function handleLogin(e) {
+        // Emergency Config Save
+        function saveEmergencyConfig(e) {
             e.preventDefault();
-            const user = document.getElementById('adminUser').value;
-            const pass = document.getElementById('adminPass').value;
-            const errorEl = document.getElementById('loginError');
-
-            if (user === 'teacher' && pass === 'Miyama2026') {
-                isLoggedIn = true;
-                document.getElementById('adminLoginBox').classList.add('hidden');
-                document.getElementById('adminDashboard').classList.remove('hidden');
-                document.getElementById('logoutBtn').classList.remove('hidden');
-                document.getElementById('resetDataBtn').classList.remove('hidden');
-                errorEl.classList.add('hidden');
-
-                // Fill Admin Form Inputs with current state values
-                populateAdminForms();
-                renderAllPages();
-            } else {
-                errorEl.textContent = 'ユーザー名またはパスワードが違います。';
-                errorEl.classList.remove('hidden');
-            }
-        }
-
-        function logoutAdmin() {
-            isLoggedIn = false;
-            document.getElementById('adminLoginBox').classList.remove('hidden');
-            document.getElementById('adminDashboard').classList.add('hidden');
-            document.getElementById('logoutBtn').classList.add('hidden');
-            document.getElementById('resetDataBtn').classList.add('hidden');
-            document.getElementById('adminUser').value = '';
-            document.getElementById('adminPass').value = '';
-        }
-
-        function resetAllData() {
-            if (confirm('すべてのカスタマイズ変更を初期設定に復元しますか？')) {
-                siteData = JSON.parse(JSON.stringify(defaultSiteData));
-                saveSiteData();
-                populateAdminForms();
-                alert('初期データに復元しました。');
-            }
+            siteData.emergency = {
+                active: document.getElementById('edit-emergency-active').checked,
+                title: document.getElementById('edit-emergency-title').value,
+                text: document.getElementById('edit-emergency-text').value
+            };
+            saveSiteData();
+            alert('緊急連絡バナーの設定を更新しました。');
         }
 
         function populateAdminForms() {
+            // Emergency
+            const em = siteData.emergency || defaultSiteData.emergency;
+            document.getElementById('edit-emergency-active').checked = em.active;
+            document.getElementById('edit-emergency-title').value = em.title;
+            document.getElementById('edit-emergency-text').value = em.text;
+
             // About Inputs
             const a = siteData.about;
             document.getElementById('edit-principal-title').value = a.principalTitle;
@@ -1437,10 +1181,10 @@
             document.getElementById('edit-info-song').value = a.infoSong;
 
             // Events Terms
-            const e = siteData.events;
-            document.getElementById('edit-term-1').value = e.term1;
-            document.getElementById('edit-term-2').value = e.term2;
-            document.getElementById('edit-term-3').value = e.term3;
+            const ev = siteData.events;
+            document.getElementById('edit-term-1').value = ev.term1;
+            document.getElementById('edit-term-2').value = ev.term2;
+            document.getElementById('edit-term-3').value = ev.term3;
 
             // Access Inputs
             const acc = siteData.access;
