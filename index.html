@@ -79,7 +79,7 @@
             <h3 id="modalTitle" class="text-lg font-bold text-gray-900 mb-4 leading-snug"></h3>
             <div id="modalContent" class="text-sm text-gray-700 leading-relaxed overflow-y-auto whitespace-pre-wrap space-y-3 pr-1 border-t border-b border-gray-100 py-4 flex-grow"></div>
             <div class="mt-4 pt-2 flex justify-between items-center text-xs">
-                <span class="text-gray-400">緑ヶ丘市立 楠ヶ丘中学校</span>
+                <span class="text-gray-400" id="modalSchoolName">福岡市立内浜中学校 1年6组</span>
                 <button onclick="closeNewsModal()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-lg transition">
                     閉じる
                 </button>
@@ -150,7 +150,7 @@
                 <i class="fa-solid fa-location-dot w-6 text-brand-gold"></i> アクセス
             </button>
             <button onclick="navigateTo('admin')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-accent flex items-center gap-2 bg-brand/50 mt-2">
-                <i class="fa-solid fa-user-lock w-6 text-brand-gold"></i> 教職員ログイン
+                <i class="fa-solid fa-user-lock w-6 text-brand-gold"></i> 管理者ログイン
             </button>
         </div>
     </header>
@@ -238,7 +238,7 @@
 
                         <!-- School Info Card -->
                         <div class="bg-brand text-white p-6 rounded-xl shadow-md">
-                            <h4 class="font-bold text-lg mb-2 text-brand-gold" id="side-school-name">1年6組公式サイト</h4>
+                            <h4 class="font-bold text-lg mb-2 text-brand-gold" id="side-school-name">福岡市立内浜中学校 1年6組</h4>
                             <p class="text-xs text-emerald-100 leading-relaxed mb-4" id="side-school-address">
                                 〒819-0005<br>
                                 福岡県福岡市西区小戸2丁目4-1<br>
@@ -259,8 +259,8 @@
         <div id="page-about" class="page-content">
             <div class="bg-brand text-white py-10 shadow-inner">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold" id="view-about-title">学校紹介</h2>
-                    <p class="text-emerald-100 text-sm mt-1" id="view-about-subtitle">緑ヶ丘市立 楠ヶ丘中学校の教育目標と校訓</p>
+                    <h2 class="text-3xl font-bold" id="view-about-title">クラス紹介</h2>
+                    <p class="text-emerald-100 text-sm mt-1" id="view-about-subtitle">福岡市立内浜中学校 1年6組の学級目標と方針</p>
                 </div>
             </div>
 
@@ -268,50 +268,48 @@
                 <!-- Principal Message -->
                 <div class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
                     <div class="w-full md:w-1/3">
-                        <img id="view-principal-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="校長" class="rounded-lg shadow-md w-full h-64 object-cover">
+                        <img id="view-principal-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="担任" class="rounded-lg shadow-md w-full h-64 object-cover">
                     </div>
                     <div class="w-full md:w-2/3 space-y-4">
-                        <span class="text-xs font-bold text-brand-accent tracking-widest uppercase">Principal Message</span>
-                        <h3 class="text-2xl font-bold text-gray-900" id="view-principal-title">「豊かな心と自立の志を育む」</h3>
+                        <span class="text-xs font-bold text-brand-accent tracking-widest uppercase">Class Message</span>
+                        <h3 class="text-2xl font-bold text-gray-900" id="view-principal-title">「互いを認め合い、ともに高め合う1年6組」</h3>
                         <p class="text-gray-600 leading-relaxed text-sm whitespace-pre-wrap" id="view-principal-msg">
-                            緑ヶ丘市立楠ヶ丘中学校のホームページをご覧いただきありがとうございます。
-                            本校は創立以来、「自主・友愛・創造」の校訓のもと、地域に根ざした教育を推進してまいりました。変化の激しい現代社会において、自ら考え判断し、他者と協働して課題を解決する力を育むことが重要です。
-
-                            生徒一人ひとりが安心して学び、目標に向かって挑戦できる学校環境を整え、信頼される学校づくりを行ってまいります。
+                            福岡市立内浜中学校 1年6組のホームページへようこそ！
+                            中学校生活のスタートを切った生徒たちが、日々の学習や行事、部活動を通してたくましく成長しています。明るく元気に、互いの違いを認め合いながら高め合える学級を目指しています。
                         </p>
                         <div class="pt-2 text-right">
-                            <p class="text-sm font-bold text-gray-800" id="view-principal-name">第14代 校長  山田 太郎</p>
+                            <p class="text-sm font-bold text-gray-800" id="view-principal-name">1年6組 担任  西田 健</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- School Creed (校訓) -->
+                <!-- Class Goals -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-xl border-t-4 border-brand shadow-sm text-center">
                         <div class="w-12 h-12 bg-emerald-50 text-brand rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
                             <i class="fa-solid fa-compass"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">自主 (Independence)</h4>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">自主・自立</h4>
                         <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-1">
-                            自ら目標を掲げ、主体的に考え行動し、自らの言動に責任を持つ態度を養います。
+                            挨拶と感謝の気持ちを忘れず、進んで行動します。
                         </p>
                     </div>
                     <div class="bg-white p-6 rounded-xl border-t-4 border-brand-accent shadow-sm text-center">
                         <div class="w-12 h-12 bg-amber-50 text-brand-accent rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
                             <i class="fa-solid fa-handshake"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">友愛 (Harmony)</h4>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">思いやり</h4>
                         <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-2">
-                            互いの個性を尊重し合い、思いやりの心を持って共に高め合う人間関係を築きます。
+                            仲間を思いやり、全員が安心して過ごせる学級をつくります。
                         </p>
                     </div>
                     <div class="bg-white p-6 rounded-xl border-t-4 border-emerald-600 shadow-sm text-center">
                         <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
                             <i class="fa-solid fa-lightbulb"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">創造 (Creativity)</h4>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">挑戦</h4>
                         <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-3">
-                            真理を求めて意欲的に学び、未来を切り拓く豊かな感性と創造力を培います。
+                            自分の目標に向かって粘り強く学習や部活動に取り組みます。
                         </p>
                     </div>
                 </div>
@@ -319,30 +317,30 @@
                 <!-- Overview Table -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8">
                     <h3 class="text-xl font-bold text-brand mb-6 border-b pb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-info text-brand-gold"></i> 学校概要
+                        <i class="fa-solid fa-circle-info text-brand-gold"></i> 学級概要
                     </h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-600">
                             <tbody class="divide-y divide-gray-100">
                                 <tr>
-                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50 w-1/4">学校名</th>
-                                    <td class="py-3 px-4" id="view-info-name">緑ヶ丘市立 楠ヶ丘中学校</td>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50 w-1/4">クラス名</th>
+                                    <td class="py-3 px-4" id="view-info-name">福岡市立内浜中学校 1年6組</td>
                                 </tr>
                                 <tr>
                                     <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">設置者</th>
-                                    <td class="py-3 px-4" id="view-info-founder">緑ヶ丘市教育委員会</td>
+                                    <td class="py-3 px-4" id="view-info-founder">福岡市教育委員会</td>
                                 </tr>
                                 <tr>
                                     <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">生徒数</th>
-                                    <td class="py-3 px-4" id="view-info-students">全校生徒 450名（各学年 4学級・支援学級2）</td>
+                                    <td class="py-3 px-4" id="view-info-students">1年6組 生徒数 35名（男子 18名・女子 17名）</td>
                                 </tr>
                                 <tr>
-                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">教職員数</th>
-                                    <td class="py-3 px-4" id="view-info-staff">35名</td>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">教職員</th>
+                                    <td class="py-3 px-4" id="view-info-staff">担任 1名 / 副担任 1名</td>
                                 </tr>
                                 <tr>
                                     <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">校歌</th>
-                                    <td class="py-3 px-4" id="view-info-song">作詞：緑ヶ丘 太郎 / 作曲：楠 華子（「緑の丘にそびえたつ 大楠の木のように…」）</td>
+                                    <td class="py-3 px-4" id="view-info-song">内浜中学校 校歌（「玄界灘の風うけて 明るい笑顔ひかる窓…」）</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -478,15 +476,15 @@
                         <div class="space-y-3 text-sm text-gray-600">
                             <div class="flex items-start gap-3">
                                 <span class="px-2 py-1 bg-emerald-100 text-brand text-xs font-bold rounded shrink-0">バス</span>
-                                <p id="view-access-bus">緑ヶ丘市営バス「楠ヶ丘中学校前」バス停下車 徒歩1分</p>
+                                <p id="view-access-bus">西鉄バス「内浜中学校前」バス停下車 徒歩2分</p>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="px-2 py-1 bg-emerald-100 text-brand text-xs font-bold rounded shrink-0">電車</span>
-                                <p id="view-access-train">緑ヶ丘電鉄「楠ヶ丘駅」北口より徒歩約12分</p>
+                                <p id="view-access-train">JR筑肥線・地下鉄空港線「姪浜駅」南口より徒歩約10分</p>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded shrink-0">車</span>
-                                <p id="view-access-car">敷地内に来客用駐車場（5台）がございます。正門よりお入りください。</p>
+                                <p id="view-access-car">学校正門よりお入りいただき、来客用駐車場をご利用ください。</p>
                             </div>
                         </div>
                     </div>
@@ -496,10 +494,10 @@
                             <i class="fa-solid fa-building text-brand-gold"></i> 所在地情報
                         </h4>
                         <div class="text-sm text-gray-600 space-y-2">
-                            <p class="font-bold text-gray-900" id="view-contact-name">緑ヶ丘市立 楠ヶ丘中学校</p>
-                            <p id="view-contact-address">〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号</p>
-                            <p id="view-contact-tel">電話番号: 000-000-0000</p>
-                            <p id="view-contact-fax">FAX番号: 000-000-0001</p>
+                            <p class="font-bold text-gray-900" id="view-contact-name">福岡市立内浜中学校 1年6組</p>
+                            <p id="view-contact-address">〒819-0005 福岡県福岡市西区小戸2丁目4-1</p>
+                            <p id="view-contact-tel">電話番号: 092-000-0000</p>
+                            <p id="view-contact-fax">FAX番号: 092-000-0001</p>
                             <p class="text-xs text-gray-400 mt-2">※防犯および生徒安全のため、ご来校の際は必ず事務室にて受付をお済ませください。</p>
                         </div>
                     </div>
@@ -580,7 +578,7 @@
                         </button>
                     </div>
 
-                    <!-- NEW TAB: EMERGENCY BANNER MANAGEMENT -->
+                    <!-- TAB: EMERGENCY BANNER MANAGEMENT -->
                     <div id="adminTab-emergency" class="admin-tab-content hidden space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
                             <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
@@ -606,7 +604,7 @@
                         </div>
                     </div>
 
-                    <!-- 1. TAB: NEWS MANAGEMENT -->
+                    <!-- TAB: NEWS MANAGEMENT -->
                     <div id="adminTab-news" class="admin-tab-content space-y-6">
                         <!-- Create Post Form -->
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
@@ -660,46 +658,46 @@
                         </div>
                     </div>
 
-                    <!-- 2. TAB: ABOUT EDIT -->
+                    <!-- TAB: ABOUT EDIT -->
                     <div id="adminTab-about" class="admin-tab-content hidden space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
                             <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
-                                <i class="fa-solid fa-graduation-cap text-brand-gold"></i> 校長あいさつ・校訓の編集
+                                <i class="fa-solid fa-graduation-cap text-brand-gold"></i> 担任メッセージ・学級目標の編集
                             </h3>
                             <form onsubmit="saveAboutConfig(event)" class="space-y-4">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">校長あいさつ 見出し</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">担任あいさつ 見出し</label>
                                         <input type="text" id="edit-principal-title" class="w-full px-3 py-2 border rounded-lg text-sm">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">校長名 / 役職</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">担任名 / 役職</label>
                                         <input type="text" id="edit-principal-name" class="w-full px-3 py-2 border rounded-lg text-sm">
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold text-gray-700 mb-1">校長メッセージ本文</label>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">メッセージ本文</label>
                                     <textarea id="edit-principal-msg" rows="5" class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【自主】</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">目標1【自主・自立】</label>
                                         <textarea id="edit-creed-1" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【友愛】</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">目標2【思いやり】</label>
                                         <textarea id="edit-creed-2" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【創造】</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">目標3【挑戦】</label>
                                         <textarea id="edit-creed-3" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
                                     </div>
                                 </div>
 
-                                <h4 class="font-bold text-brand border-b pb-2 pt-4">学校概要スペック</h4>
+                                <h4 class="font-bold text-brand border-b pb-2 pt-4">学級概要スペック</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">学校名</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">クラス名</label>
                                         <input type="text" id="edit-info-name" class="w-full px-3 py-2 border rounded-lg text-sm">
                                     </div>
                                     <div>
@@ -711,7 +709,7 @@
                                         <input type="text" id="edit-info-students" class="w-full px-3 py-2 border rounded-lg text-sm">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1">教職員数</label>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">教職員</label>
                                         <input type="text" id="edit-info-staff" class="w-full px-3 py-2 border rounded-lg text-sm">
                                     </div>
                                 </div>
@@ -721,13 +719,13 @@
                                 </div>
 
                                 <button type="submit" class="px-6 py-2.5 bg-brand text-white font-bold rounded-lg shadow text-sm hover:bg-brand-dark transition">
-                                    学校紹介ページの設定を保存
+                                    クラス紹介ページの設定を保存
                                 </button>
                             </form>
                         </div>
                     </div>
 
-                    <!-- 3. TAB: EVENTS EDIT -->
+                    <!-- TAB: EVENTS EDIT -->
                     <div id="adminTab-events" class="admin-tab-content hidden space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
                             <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
@@ -808,7 +806,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. TAB: CLUBS EDIT -->
+                    <!-- TAB: CLUBS EDIT -->
                     <div id="adminTab-clubs" class="admin-tab-content hidden space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
                             <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
@@ -855,7 +853,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. TAB: ACCESS EDIT -->
+                    <!-- TAB: ACCESS EDIT -->
                     <div id="adminTab-access" class="admin-tab-content hidden space-y-6">
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
                             <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
@@ -961,7 +959,7 @@
             events: {
                 term1: '・4月: 入学式 / 対面式\n・5月: 自然教室 (1年) / 体力テスト\n・6月: クラス合唱練習 / 期末テスト\n・7月: 中総体応援 / 終業式',
                 term2: '・8月: 始業式 / 課題テスト\n・9月: 体育祭・学級対抗リレー\n・10月: 文化祭・合唱コンクール\n・11月: 期末テスト / 三者面談',
-                term3: '・1月: 始業式 / 実力テスト\n・2月: 立志の誓い / 学年末テスト\n・3月: クラスクラスマッチ / 修了式',
+                term3: '・1月: 始業式 / 実力テスト\n・2月: 立志の誓い / 学年末テスト\n・3月: クラスマッチ / 修了式',
                 list: [
                     { id: 101, date: '5/10', day: '金', title: '全校体力テスト', target: '1年6組', note: '体操服着用' },
                     { id: 102, date: '5/15', day: '水', title: '自然教室事前学習', target: '1学年全クラス', note: '5-6時間目' },
@@ -987,7 +985,7 @@
             }
         };
 
-        // 安全に LocalStorage を読み込む関数
+        // Load LocalStorage Safely
         function loadSavedData() {
             try {
                 const saved = localStorage.getItem('uchihama_1_6_data');
@@ -997,9 +995,57 @@
             }
         }
 
-        // Global Dynamic State
         let siteData = loadSavedData();
         let isLoggedIn = false;
+
+        // Navigation Engine
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-page') === pageId) {
+                    btn.classList.add('bg-brand-light');
+                } else {
+                    btn.classList.remove('bg-brand-light');
+                }
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Control
+        function openNewsModal(id) {
+            const newsItem = siteData.news.find(n => n.id === id);
+            if (!newsItem) return;
+
+            document.getElementById('modalCategory').textContent = newsItem.category;
+            document.getElementById('modalDate').textContent = newsItem.date;
+            document.getElementById('modalTitle').textContent = newsItem.title;
+            document.getElementById('modalContent').innerHTML = autoLink(newsItem.content);
+            document.getElementById('modalSchoolName').textContent = siteData.about.infoName || '福岡市立内浜中学校 1年6組';
+
+            const modal = document.getElementById('newsModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeNewsModal() {
+            document.getElementById('newsModal').classList.add('hidden');
+        }
 
         // Admin Auth Handler
         function handleLogin(e) {
@@ -1031,6 +1077,15 @@
             document.getElementById('logoutBtn').classList.add('hidden');
             document.getElementById('adminUser').value = '';
             document.getElementById('adminPass').value = '';
+        }
+
+        function resetAllData() {
+            if (confirm('全てのデータを初期状態に戻しますか？（変更内容は失われます）')) {
+                siteData = JSON.parse(JSON.stringify(defaultSiteData));
+                saveSiteData();
+                populateAdminForms();
+                alert('初期データに復元しました。');
+            }
         }
 
         function switchAdminTab(tabName) {
@@ -1068,7 +1123,7 @@
             });
         }
 
-        // Main Render Dispatcher
+        // Render Functions
         function renderAllPages() {
             renderEmergencyBanner();
             renderNewsHome();
@@ -1084,7 +1139,6 @@
             }
         }
 
-        // Render Emergency Banner
         function renderEmergencyBanner() {
             const container = document.getElementById('emergencyBannerContainer');
             if (!container) return;
@@ -1099,32 +1153,34 @@
             }
         }
 
-        // Header Canvas Emblem
-        function renderHeaderEmblem() {
-            const canvas = document.getElementById('headerEmblemCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function renderNewsHome() {
+            const container = document.getElementById('homeNewsContainer');
+            if (!container) return;
 
-            ctx.beginPath();
-            ctx.arc(25, 25, 22, 0, Math.PI * 2);
-            ctx.strokeStyle = '#d97706';
-            ctx.lineWidth = 2;
-            ctx.stroke();
+            if (siteData.news.length === 0) {
+                container.innerHTML = `<p class="text-sm text-gray-500 py-4">現在投稿されたお知らせはありません。</p>`;
+                return;
+            }
 
-            ctx.fillStyle = '#f59e0b';
-            ctx.beginPath();
-            ctx.arc(25, 25, 14, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = '#1b4d3e';
-            ctx.font = 'bold 12px "Noto Sans JP", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('1-6', 25, 26);
+            container.innerHTML = siteData.news.map(item => `
+                <div onclick="openNewsModal(${item.id})" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 group">
+                    <div class="space-y-1.5 flex-grow">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 text-xs font-bold bg-brand/10 text-brand rounded-full">${item.category}</span>
+                            <span class="text-xs font-semibold text-gray-400">${item.date}</span>
+                        </div>
+                        <h4 class="font-bold text-gray-900 group-hover:text-brand transition text-base line-clamp-1">${item.title}</h4>
+                        <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">${item.content}</p>
+                    </div>
+                    <div class="shrink-0 text-right sm:self-center">
+                        <span class="inline-flex items-center text-xs font-bold text-brand group-hover:translate-x-1 transition-transform">
+                            詳細を見る <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Render About Page
         function renderAboutPage() {
             const a = siteData.about;
             document.getElementById('view-principal-title').textContent = a.principalTitle;
@@ -1145,6 +1201,84 @@
             document.getElementById('side-school-name').textContent = a.infoName;
         }
 
+        function renderEventsPage() {
+            const ev = siteData.events;
+            document.getElementById('view-term-1').textContent = ev.term1;
+            document.getElementById('view-term-2').textContent = ev.term2;
+            document.getElementById('view-term-3').textContent = ev.term3;
+
+            const listContainer = document.getElementById('view-event-list');
+            if (listContainer) {
+                listContainer.innerHTML = ev.list.map(e => `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="py-3 px-4 font-bold text-brand">${e.date}</td>
+                        <td class="py-3 px-4">
+                            <span class="w-6 h-6 inline-flex items-center justify-center rounded-full text-xs font-bold ${e.day === '日' ? 'bg-red-100 text-red-600' : e.day === '土' ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-700'}">${e.day}</span>
+                        </td>
+                        <td class="py-3 px-4 font-bold text-gray-800">${e.title}</td>
+                        <td class="py-3 px-4 text-xs text-gray-600">${e.target}</td>
+                        <td class="py-3 px-4 text-xs text-gray-500">${e.note || '-'}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function renderClubsPage() {
+            const sportsContainer = document.getElementById('view-sports-clubs');
+            const culturalContainer = document.getElementById('view-cultural-clubs');
+
+            if (sportsContainer) {
+                const sports = siteData.clubs.filter(c => c.category === 'sports');
+                sportsContainer.innerHTML = sports.map(c => `
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 space-y-3 hover:shadow-md transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 ${c.bg || 'bg-brand'} text-white rounded-lg flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid ${c.icon || 'fa-running'}"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">${c.name}</h4>
+                                <p class="text-xs text-emerald-700 font-semibold">${c.activity}</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">${c.desc}</p>
+                    </div>
+                `).join('');
+            }
+
+            if (culturalContainer) {
+                const cultural = siteData.clubs.filter(c => c.category === 'cultural');
+                culturalContainer.innerHTML = cultural.map(c => `
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 space-y-3 hover:shadow-md transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 ${c.bg || 'bg-purple-800'} text-white rounded-lg flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid ${c.icon || 'fa-palette'}"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base">${c.name}</h4>
+                                <p class="text-xs text-purple-700 font-semibold">${c.activity}</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">${c.desc}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderAccessPage() {
+            const acc = siteData.access;
+            document.getElementById('view-access-bus').textContent = acc.bus;
+            document.getElementById('view-access-train').textContent = acc.train;
+            document.getElementById('view-access-car').textContent = acc.car;
+
+            document.getElementById('view-contact-name').textContent = siteData.about.infoName || '福岡市立内浜中学校 1年6組';
+            document.getElementById('view-contact-address').textContent = acc.address;
+            document.getElementById('view-contact-tel').textContent = acc.tel;
+            document.getElementById('view-contact-fax').textContent = acc.fax;
+
+            document.getElementById('side-school-address').innerHTML = `${acc.address}<br>${acc.tel}`;
+            document.getElementById('footer-school-contact').textContent = `${acc.address} | ${acc.tel}`;
+        }
+
         // Emergency Config Save
         function saveEmergencyConfig(e) {
             e.preventDefault();
@@ -1158,13 +1292,11 @@
         }
 
         function populateAdminForms() {
-            // Emergency
             const em = siteData.emergency || defaultSiteData.emergency;
             document.getElementById('edit-emergency-active').checked = em.active;
             document.getElementById('edit-emergency-title').value = em.title;
             document.getElementById('edit-emergency-text').value = em.text;
 
-            // About Inputs
             const a = siteData.about;
             document.getElementById('edit-principal-title').value = a.principalTitle;
             document.getElementById('edit-principal-name').value = a.principalName;
@@ -1180,13 +1312,11 @@
             document.getElementById('edit-info-staff').value = a.infoStaff;
             document.getElementById('edit-info-song').value = a.infoSong;
 
-            // Events Terms
             const ev = siteData.events;
             document.getElementById('edit-term-1').value = ev.term1;
             document.getElementById('edit-term-2').value = ev.term2;
             document.getElementById('edit-term-3').value = ev.term3;
 
-            // Access Inputs
             const acc = siteData.access;
             document.getElementById('edit-access-bus').value = acc.bus;
             document.getElementById('edit-access-train').value = acc.train;
@@ -1197,8 +1327,7 @@
             document.getElementById('edit-contact-fax').value = acc.fax;
         }
 
-        // SAVE FORM HANDLERS
-
+        // Save Forms Logic
         function saveAboutConfig(e) {
             e.preventDefault();
             siteData.about = {
@@ -1215,7 +1344,7 @@
                 infoSong: document.getElementById('edit-info-song').value
             };
             saveSiteData();
-            alert('学校紹介の情報を更新しました。');
+            alert('クラス紹介の情報を更新しました。');
         }
 
         function saveTermsConfig(e) {
@@ -1241,9 +1370,7 @@
             alert('アクセス・連絡先情報を更新しました。');
         }
 
-        // DYNAMIC ITEMS CREATION & DELETION
-
-        // News
+        // Admin News Actions
         function renderNewsAdmin() {
             const container = document.getElementById('adminNewsList');
             if (!container) return;
@@ -1288,7 +1415,7 @@
             }
         }
 
-        // Events
+        // Admin Events Actions
         function renderEventsAdmin() {
             const container = document.getElementById('adminEventsTable');
             if (!container) return;
@@ -1330,7 +1457,7 @@
             saveSiteData();
         }
 
-        // Clubs
+        // Admin Clubs Actions
         function renderClubsAdmin() {
             const sportsContainer = document.getElementById('adminSportsClubsList');
             const culturalContainer = document.getElementById('adminCulturalClubsList');
@@ -1383,6 +1510,173 @@
             siteData.clubs = siteData.clubs.filter(c => c.id !== id);
             saveSiteData();
         }
+
+        // CANVAS DRAWING (Hero Background Animated & Interactive Campus Map)
+        let heroParticles = [];
+
+        function initHeroCanvas() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            heroParticles = [];
+            for (let i = 0; i < 40; i++) {
+                heroParticles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 3 + 1,
+                    dx: (Math.random() - 0.5) * 0.5,
+                    dy: (Math.random() - 0.5) * 0.5,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Gradient Background
+                const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                grad.addColorStop(0, '#14382e');
+                grad.addColorStop(1, '#1b4d3e');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Floating particles
+                heroParticles.forEach(p => {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 158, 11, ${p.alpha})`;
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Campus Interactive Map Canvas
+        function initCampusMapCanvas() {
+            const canvas = document.getElementById('campusMapCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const buildings = [
+                { id: 'main', name: '本校舎 (普通教室・管理棟)', x: 100, y: 80, w: 260, h: 100, color: '#1b4d3e' },
+                { id: 'sub', name: '特別校舎 (理科室・美術室・PC室)', x: 400, y: 80, w: 220, h: 100, color: '#2a6a57' },
+                { id: 'gym', name: '体育館・武道場', x: 100, y: 220, w: 180, h: 130, color: '#d97706' },
+                { id: 'ground', name: 'グラウンド (陸上・サッカー部等)', x: 320, y: 210, w: 420, h: 150, color: '#a7f3d0' }
+            ];
+
+            let hoveredBuilding = null;
+
+            function drawMap() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Campus Ground Base
+                ctx.fillStyle = '#f0fdf4';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Pathways
+                ctx.strokeStyle = '#e2e8f0';
+                ctx.lineWidth = 12;
+                ctx.beginPath();
+                ctx.moveTo(50, 130);
+                ctx.lineTo(750, 130);
+                ctx.moveTo(290, 50);
+                ctx.lineTo(290, 370);
+                ctx.stroke();
+
+                // Buildings Render
+                buildings.forEach(b => {
+                    const isHover = hoveredBuilding === b;
+                    
+                    ctx.shadowColor = 'rgba(0,0,0,0.15)';
+                    ctx.shadowBlur = isHover ? 12 : 4;
+                    
+                    ctx.fillStyle = b.color;
+                    ctx.fillRect(b.x, b.y, b.w, b.h);
+
+                    ctx.shadowBlur = 0; // reset
+                    ctx.strokeStyle = isHover ? '#f59e0b' : '#ffffff';
+                    ctx.lineWidth = isHover ? 3 : 1;
+                    ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+                    // Text
+                    ctx.fillStyle = b.color === '#a7f3d0' ? '#166534' : '#ffffff';
+                    ctx.font = isHover ? 'bold 13px "Noto Sans JP"' : '12px "Noto Sans JP"';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(b.name, b.x + b.w / 2, b.y + b.h / 2);
+                });
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const mouseX = (e.clientX - rect.left) * scaleX;
+                const mouseY = (e.clientY - rect.top) * scaleY;
+
+                let found = null;
+                buildings.forEach(b => {
+                    if (mouseX >= b.x && mouseX <= b.x + b.w && mouseY >= b.y && mouseY <= b.y + b.h) {
+                        found = b;
+                    }
+                });
+
+                if (hoveredBuilding !== found) {
+                    hoveredBuilding = found;
+                    drawMap();
+                }
+            });
+
+            drawMap();
+        }
+
+        // Header Emblem Canvas
+        function renderHeaderEmblem() {
+            const canvas = document.getElementById('headerEmblemCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(22, 22, 19, 0, Math.PI * 2);
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(22, 22, 13, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#1b4d3e';
+            ctx.font = 'bold 11px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('1-6', 22, 23);
+        }
+
+        // Initialization
+        window.addEventListener('load', () => {
+            renderAllPages();
+            renderHeaderEmblem();
+            initHeroCanvas();
+            initCampusMapCanvas();
+        });
     </script>
 </body>
 </html>
