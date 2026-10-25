@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="ja" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>緑ヶ丘市立 楠ヶ丘中学校 公式サイト</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Noto Sans JP) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#14382e',
+                            DEFAULT: '#1b4d3e',
+                            light: '#2a6a57',
+                            accent: '#d97706',
+                            gold: '#f59e0b',
+                            bg: '#f8faf9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8faf9;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4d3e;
+            border-radius: 4px;
+        }
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen text-gray-800 antialiased selection:bg-brand selection:text-white relative">
+
+    <!-- NEWS DETAIL MODAL -->
+    <div id="newsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-xl shadow-xl border border-gray-200 max-w-lg w-full p-6 relative max-h-[85vh] flex flex-col animate-fadeIn">
+            <button onclick="closeNewsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="flex items-center gap-2 mb-3">
+                <span id="modalCategory" class="px-2.5 py-0.5 text-xs font-bold bg-brand/10 text-brand rounded-full">お知らせ</span>
+                <span id="modalDate" class="text-xs font-semibold text-gray-500">2026.05.01</span>
+            </div>
+            <h3 id="modalTitle" class="text-lg font-bold text-gray-900 mb-4 leading-snug"></h3>
+            <div id="modalContent" class="text-sm text-gray-700 leading-relaxed overflow-y-auto whitespace-pre-wrap space-y-3 pr-1 border-t border-b border-gray-100 py-4 flex-grow"></div>
+            <div class="mt-4 pt-2 flex justify-between items-center text-xs">
+                <span class="text-gray-400">緑ヶ丘市立 楠ヶ丘中学校</span>
+                <button onclick="closeNewsModal()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-lg transition">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & EMBLEM CANVAS -->
+    <header class="bg-brand text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Branding with Emblem Canvas -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <canvas id="headerEmblemCanvas" width="50" height="50" class="rounded-full bg-brand-dark/40 border border-brand-accent/30"></canvas>
+                    <div>
+                        <span class="block text-xs font-medium text-brand-gold tracking-widest">MIDORIGAOKA JUNIOR HIGH SCHOOL</span>
+                        <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white flex items-center gap-2">
+                            緑ヶ丘市立 楠ヶ丘中学校
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
+                    <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5 active-nav" data-page="home">
+                        <i class="fa-solid fa-house text-brand-gold"></i> トップ
+                    </button>
+                    <button onclick="navigateTo('about')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="about">
+                        <i class="fa-solid fa-school text-brand-gold"></i> 学校紹介
+                    </button>
+                    <button onclick="navigateTo('events')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="events">
+                        <i class="fa-solid fa-calendar-days text-brand-gold"></i> 行事予定
+                    </button>
+                    <button onclick="navigateTo('clubs')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="clubs">
+                        <i class="fa-solid fa-basketball text-brand-gold"></i> 部活動
+                    </button>
+                    <button onclick="navigateTo('access')" class="nav-btn px-3 py-2 rounded-md transition duration-150 hover:bg-brand-light flex items-center gap-1.5" data-page="access">
+                        <i class="fa-solid fa-location-dot text-brand-gold"></i> アクセス
+                    </button>
+                    <button onclick="navigateTo('admin')" class="nav-btn px-3 py-2 rounded-md transition duration-150 bg-brand-dark/50 hover:bg-brand-accent text-white flex items-center gap-1.5 border border-brand-accent/40" data-page="admin">
+                        <i class="fa-solid fa-user-lock text-brand-gold"></i> サイト統合管理
+                    </button>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-gray-200 hover:text-white hover:bg-brand-light focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-dark px-4 pt-2 pb-4 space-y-1 border-t border-brand-light">
+            <button onclick="navigateTo('home')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
+                <i class="fa-solid fa-house w-6 text-brand-gold"></i> トップ
+            </button>
+            <button onclick="navigateTo('about')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
+                <i class="fa-solid fa-school w-6 text-brand-gold"></i> 学校紹介
+            </button>
+            <button onclick="navigateTo('events')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
+                <i class="fa-solid fa-calendar-days w-6 text-brand-gold"></i> 行事予定
+            </button>
+            <button onclick="navigateTo('clubs')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
+                <i class="fa-solid fa-basketball w-6 text-brand-gold"></i> 部活動
+            </button>
+            <button onclick="navigateTo('access')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-light flex items-center gap-2">
+                <i class="fa-solid fa-location-dot w-6 text-brand-gold"></i> アクセス
+            </button>
+            <button onclick="navigateTo('admin')" class="mobile-nav-btn w-full text-left px-3 py-2.5 rounded-md font-medium text-white hover:bg-brand-accent flex items-center gap-2 bg-brand/50 mt-2">
+                <i class="fa-solid fa-user-lock w-6 text-brand-gold"></i> 教職員ログイン
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ==================== HOME PAGE ==================== -->
+        <div id="page-home" class="page-content active">
+            <!-- Hero Canvas Area -->
+            <div class="relative bg-brand-dark overflow-hidden text-white min-h-[380px] sm:min-h-[460px] flex items-center justify-center">
+                <canvas id="heroCanvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto py-12">
+                    <span class="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-gold/40 text-brand-gold text-xs sm:text-sm font-semibold rounded-full mb-4 backdrop-blur-md">
+                        伝統と創造 ・ 自律と共生
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 drop-shadow-md">
+                        自ら学び、心豊かに、たくましく
+                    </h2>
+                    <p class="text-base sm:text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed drop-shadow">
+                        緑ヶ丘市立 楠ヶ丘中学校は、豊かな自然と歴史に育まれた環境の中で、生徒一人ひとりの可能性を開花させる教育を行っています。
+                    </p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-4">
+                        <button onclick="navigateTo('about')" class="px-6 py-3 bg-brand-gold hover:bg-yellow-500 text-gray-900 font-bold rounded-lg shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+                            学校案内を見る
+                        </button>
+                        <button onclick="navigateTo('events')" class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-md border border-white/20 transition duration-200">
+                            年間行事予定
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice / Quick Links section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- News Feed (Left 2 columns) -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="flex items-center justify-between border-b border-gray-200 pb-4">
+                            <h3 class="text-2xl font-bold text-brand flex items-center gap-2">
+                                <i class="fa-solid fa-bullhorn text-brand-accent"></i> お知らせ・新着情報
+                            </h3>
+                            <span class="text-xs text-gray-500">保護者・地域の皆様へ</span>
+                        </div>
+
+                        <!-- News Container -->
+                        <div id="homeNewsContainer" class="space-y-4">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Links & Information (Right 1 column) -->
+                    <div class="space-y-6">
+                        <!-- Emergency Banner -->
+                        <div class="bg-amber-50 border-l-4 border-brand-accent p-4 rounded-r-lg shadow-sm">
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-triangle-exclamation text-brand-accent text-xl mt-0.5 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-amber-900 text-sm">緊急連絡・台風等の対応</h4>
+                                    <p class="text-xs text-amber-800 mt-1 leading-relaxed">
+                                        気象警報発表時および非常災害時の登下校判断につきましては「保護者の手引き」をご確認ください。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Navigation Cards -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="font-bold text-brand text-lg mb-4 pb-2 border-b border-gray-100 flex items-center gap-2">
+                                <i class="fa-solid fa-link text-brand-gold"></i> クイックアクセス
+                            </h4>
+                            <div class="space-y-3">
+                                <button onclick="navigateTo('events')" class="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-brand hover:bg-emerald-50/50 transition flex items-center justify-between group">
+                                    <span class="text-sm font-medium text-gray-700 group-hover:text-brand"><i class="fa-regular fa-calendar-check mr-2 text-brand"></i>今月の行事カレンダー</span>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand"></i>
+                                </button>
+                                <button onclick="navigateTo('clubs')" class="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-brand hover:bg-emerald-50/50 transition flex items-center justify-between group">
+                                    <span class="text-sm font-medium text-gray-700 group-hover:text-brand"><i class="fa-solid fa-medal mr-2 text-brand"></i>部活動の実績・活動方針</span>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand"></i>
+                                </button>
+                                <button onclick="navigateTo('access')" class="w-full text-left p-3 rounded-lg border border-gray-100 hover:border-brand hover:bg-emerald-50/50 transition flex items-center justify-between group">
+                                    <span class="text-sm font-medium text-gray-700 group-hover:text-brand"><i class="fa-solid fa-map-location-dot mr-2 text-brand"></i>校内マップ・アクセス</span>
+                                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- School Info Card -->
+                        <div class="bg-brand text-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold text-lg mb-2 text-brand-gold">緑ヶ丘市立 楠ヶ丘中学校</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed mb-4">
+                                〒000-0000<br>
+                                緑ヶ丘市楠ヶ丘1丁目2番3号<br>
+                                TEL: 000-000-0000 / FAX: 000-000-0001
+                            </p>
+                            <div class="text-xs bg-brand-dark/60 p-3 rounded-lg border border-brand-light">
+                                <p class="font-semibold text-brand-gold mb-1"><i class="fa-regular fa-clock mr-1"></i> 業務時間</p>
+                                <p class="text-emerald-100">平日 8:00 ～ 18:00（祝定休）</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ABOUT PAGE ==================== -->
+        <div id="page-about" class="page-content">
+            <div class="bg-brand text-white py-10 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold" id="view-about-title">学校紹介</h2>
+                    <p class="text-emerald-100 text-sm mt-1" id="view-about-subtitle">緑ヶ丘市立 楠ヶ丘中学校の教育目標と校訓</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+                <!-- Principal Message -->
+                <div class="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-full md:w-1/3">
+                        <img id="view-principal-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="校長" class="rounded-lg shadow-md w-full h-64 object-cover">
+                    </div>
+                    <div class="w-full md:w-2/3 space-y-4">
+                        <span class="text-xs font-bold text-brand-accent tracking-widest uppercase">Principal Message</span>
+                        <h3 class="text-2xl font-bold text-gray-900" id="view-principal-title">「豊かな心と自立の志を育む」</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm whitespace-pre-wrap" id="view-principal-msg">
+                            緑ヶ丘市立楠ヶ丘中学校のホームページをご覧いただきありがとうございます。
+                            本校は創立以来、「自主・友愛・創造」の校訓のもと、地域に根ざした教育を推進してまいりました。変化の激しい現代社会において、自ら考え判断し、他者と協働して課題を解決する力を育むことが重要です。
+
+                            生徒一人ひとりが安心して学び、目標に向かって挑戦できる学校環境を整え、信頼される学校づくりを行ってまいります。
+                        </p>
+                        <div class="pt-2 text-right">
+                            <p class="text-sm font-bold text-gray-800" id="view-principal-name">第14代 校長  山田 太郎</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- School Creed (校訓) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl border-t-4 border-brand shadow-sm text-center">
+                        <div class="w-12 h-12 bg-emerald-50 text-brand rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">自主 (Independence)</h4>
+                        <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-1">
+                            自ら目標を掲げ、主体的に考え行動し、自らの言動に責任を持つ態度を養います。
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border-t-4 border-brand-accent shadow-sm text-center">
+                        <div class="w-12 h-12 bg-amber-50 text-brand-accent rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">友愛 (Harmony)</h4>
+                        <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-2">
+                            互いの個性を尊重し合い、思いやりの心を持って共に高め合う人間関係を築きます。
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border-t-4 border-emerald-600 shadow-sm text-center">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">創造 (Creativity)</h4>
+                        <p class="text-gray-600 text-xs leading-relaxed" id="view-creed-3">
+                            真理を求めて意欲的に学び、未来を切り拓く豊かな感性と創造力を培います。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Overview Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8">
+                    <h3 class="text-xl font-bold text-brand mb-6 border-b pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-brand-gold"></i> 学校概要
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <tbody class="divide-y divide-gray-100">
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50 w-1/4">学校名</th>
+                                    <td class="py-3 px-4" id="view-info-name">緑ヶ丘市立 楠ヶ丘中学校</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">設置者</th>
+                                    <td class="py-3 px-4" id="view-info-founder">緑ヶ丘市教育委員会</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">生徒数</th>
+                                    <td class="py-3 px-4" id="view-info-students">全校生徒 450名（各学年 4学級・支援学級2）</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">教職員数</th>
+                                    <td class="py-3 px-4" id="view-info-staff">35名</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold text-gray-900 bg-gray-50">校歌</th>
+                                    <td class="py-3 px-4" id="view-info-song">作詞：緑ヶ丘 太郎 / 作曲：楠 華子（「緑の丘にそびえたつ 大楠の木のように…」）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EVENTS PAGE ==================== -->
+        <div id="page-events" class="page-content">
+            <div class="bg-brand text-white py-10 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold">行事予定</h2>
+                    <p class="text-emerald-100 text-sm mt-1">年間行事および月別スケジュール</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+                <!-- Major Annual Events -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-lg border-l-4 border-emerald-500 shadow-sm">
+                        <span class="text-xs font-bold text-emerald-600 uppercase">1st Term</span>
+                        <h4 class="font-bold text-gray-900 text-base mt-1 mb-2">1学期 (4月 - 7月)</h4>
+                        <div id="view-term-1" class="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap"></div>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg border-l-4 border-amber-500 shadow-sm">
+                        <span class="text-xs font-bold text-amber-600 uppercase">2nd Term</span>
+                        <h4 class="font-bold text-gray-900 text-base mt-1 mb-2">2学期 (8月 - 12月)</h4>
+                        <div id="view-term-2" class="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap"></div>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <span class="text-xs font-bold text-blue-600 uppercase">3rd Term</span>
+                        <h4 class="font-bold text-gray-900 text-base mt-1 mb-2">3学期 (1月 - 3月)</h4>
+                        <div id="view-term-3" class="text-xs text-gray-600 leading-relaxed whitespace-pre-wrap"></div>
+                    </div>
+                </div>
+
+                <!-- Monthly Schedule Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-xl font-bold text-brand mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-brand-gold"></i> 月間行事予定一覧
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
+                                <tr>
+                                    <th class="py-3 px-4">日付</th>
+                                    <th class="py-3 px-4">曜</th>
+                                    <th class="py-3 px-4">行事内容</th>
+                                    <th class="py-3 px-4">対象</th>
+                                    <th class="py-3 px-4">備考</th>
+                                </tr>
+                            </thead>
+                            <tbody id="view-event-list" class="divide-y divide-gray-100">
+                                <!-- Dynamic rendering -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CLUBS PAGE ==================== -->
+        <div id="page-clubs" class="page-content">
+            <div class="bg-brand text-white py-10 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold">部活動</h2>
+                    <p class="text-emerald-100 text-sm mt-1">運動部・文化部の紹介と活動方針</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+                <!-- Sports Clubs -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand mb-4 pb-2 border-b border-gray-200 flex items-center gap-2">
+                        <i class="fa-solid fa-running text-brand-gold"></i> 運動部 (Sports Clubs)
+                    </h3>
+                    <div id="view-sports-clubs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Dynamic -->
+                    </div>
+                </div>
+
+                <!-- Cultural Clubs -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand mb-4 pb-2 border-b border-gray-200 flex items-center gap-2">
+                        <i class="fa-solid fa-palette text-brand-gold"></i> 文化部 (Cultural Clubs)
+                    </h3>
+                    <div id="view-cultural-clubs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Dynamic -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ACCESS PAGE (WITH MAP CANVAS) ==================== -->
+        <div id="page-access" class="page-content">
+            <div class="bg-brand text-white py-10 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold">アクセス・校内案内</h2>
+                    <p class="text-emerald-100 text-sm mt-1">所在地・交通案内およびキャンパスマップ</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+                <!-- Interactive Canvas Map Container -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-brand flex items-center gap-2">
+                                <i class="fa-solid fa-map text-brand-gold"></i> 校内キャンパスマップ (Interactive Map)
+                            </h3>
+                            <p class="text-xs text-gray-500 mt-0.5">施設の上にカーソルを置くかタップすると詳細が表示されます。</p>
+                        </div>
+                        <div class="flex gap-2 text-xs">
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-emerald-700 rounded-sm inline-block"></span> 校舎</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-amber-600 rounded-sm inline-block"></span> 体育館/施設</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-emerald-200 rounded-sm inline-block"></span> グラウンド</span>
+                        </div>
+                    </div>
+
+                    <!-- Canvas element -->
+                    <div class="relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+                        <canvas id="campusMapCanvas" width="800" height="400" class="w-full h-auto cursor-pointer block"></canvas>
+                    </div>
+                </div>
+
+                <!-- Location & Bus routes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                        <h4 class="font-bold text-brand text-lg border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-bus text-brand-gold"></i> 交通アクセス
+                        </h4>
+                        <div class="space-y-3 text-sm text-gray-600">
+                            <div class="flex items-start gap-3">
+                                <span class="px-2 py-1 bg-emerald-100 text-brand text-xs font-bold rounded shrink-0">バス</span>
+                                <p id="view-access-bus">緑ヶ丘市営バス「楠ヶ丘中学校前」バス停下車 徒歩1分</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="px-2 py-1 bg-emerald-100 text-brand text-xs font-bold rounded shrink-0">電車</span>
+                                <p id="view-access-train">緑ヶ丘電鉄「楠ヶ丘駅」北口より徒歩約12分</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded shrink-0">車</span>
+                                <p id="view-access-car">敷地内に来客用駐車場（5台）がございます。正門よりお入りください。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                        <h4 class="font-bold text-brand text-lg border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-building text-brand-gold"></i> 所在地情報
+                        </h4>
+                        <div class="text-sm text-gray-600 space-y-2">
+                            <p class="font-bold text-gray-900" id="view-contact-name">緑ヶ丘市立 楠ヶ丘中学校</p>
+                            <p id="view-contact-address">〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号</p>
+                            <p id="view-contact-tel">電話番号: 000-000-0000</p>
+                            <p id="view-contact-fax">FAX番号: 000-000-0001</p>
+                            <p class="text-xs text-gray-400 mt-2">※防犯および生徒安全のため、ご来校の際は必ず事務室にて受付をお済ませください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ADMIN PAGE ==================== -->
+        <div id="page-admin" class="page-content">
+            <div class="bg-brand text-white py-8 shadow-inner">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-user-gear text-brand-gold"></i> サイト総合管理コンソール
+                        </h2>
+                        <p class="text-emerald-100 text-xs mt-1">お知らせ・学校案内・行事・部活動の総合編集・リアルタイム更新</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button id="resetDataBtn" onclick="resetAllData()" class="hidden px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> 初期データに復元
+                        </button>
+                        <button id="logoutBtn" onclick="logoutAdmin()" class="hidden px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded transition">
+                            <i class="fa-solid fa-right-from-bracket mr-1"></i> ログアウト
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <!-- Login Box -->
+                <div id="adminLoginBox" class="bg-white p-8 rounded-xl shadow-md border border-gray-100 max-w-md mx-auto space-y-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">教職員認証パネル</h3>
+                        <p class="text-xs text-gray-500 mt-1">管理者アカウントでログインしてください。</p>
+                    </div>
+
+                    <form onsubmit="handleLogin(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">ユーザー名</label>
+                            <input type="text" id="adminUser" required placeholder="teacher" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand focus:border-transparent outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">パスワード</label>
+                            <input type="password" id="adminPass" required placeholder="••••••••" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand focus:border-transparent outline-none">
+                        </div>
+                        <p id="loginError" class="text-xs text-red-600 hidden font-semibold text-center"></p>
+                        <button type="submit" class="w-full py-2.5 bg-brand hover:bg-brand-dark text-white font-bold rounded-lg shadow transition duration-150">
+                            ログイン
+                        </button>
+                    </form>
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 text-[11px] text-gray-500 space-y-0.5">
+                        <p class="font-bold text-gray-700">デモ用アカウント:</p>
+                        <p>ユーザー名: <code class="text-brand font-bold">teacher</code></p>
+                        <p>パスワード: <code class="text-brand font-bold">Miyama2026</code></p>
+                    </div>
+                </div>
+
+                <!-- Admin Dashboard (Tabs for editing all site content) -->
+                <div id="adminDashboard" class="hidden space-y-6">
+                    
+                    <!-- Admin Navigation Tabs -->
+                    <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-2">
+                        <button onclick="switchAdminTab('news')" class="admin-tab-btn px-4 py-2 bg-brand text-white rounded-lg text-xs font-bold shadow-sm transition" data-tab="news">
+                            <i class="fa-solid fa-bullhorn mr-1"></i> お知らせ管理
+                        </button>
+                        <button onclick="switchAdminTab('about')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="about">
+                            <i class="fa-solid fa-school mr-1"></i> 学校紹介の編集
+                        </button>
+                        <button onclick="switchAdminTab('events')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="events">
+                            <i class="fa-solid fa-calendar-days mr-1"></i> 行事予定の編集
+                        </button>
+                        <button onclick="switchAdminTab('clubs')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="clubs">
+                            <i class="fa-solid fa-basketball mr-1"></i> 部活動の編集
+                        </button>
+                        <button onclick="switchAdminTab('access')" class="admin-tab-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-bold transition" data-tab="access">
+                            <i class="fa-solid fa-location-dot mr-1"></i> アクセス・連絡先の編集
+                        </button>
+                    </div>
+
+                    <!-- 1. TAB: NEWS MANAGEMENT -->
+                    <div id="adminTab-news" class="admin-tab-content space-y-6">
+                        <!-- Create Post Form -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-pen-to-square text-brand-gold"></i> 新規お知らせ投稿
+                            </h3>
+                            <form onsubmit="createNewsPost(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">タイトル</label>
+                                        <input type="text" id="postTitle" required placeholder="例: 体育祭の延期について" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">カテゴリ</label>
+                                        <select id="postCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand outline-none">
+                                            <option value="お知らせ">お知らせ</option>
+                                            <option value="全校行事">全校行事</option>
+                                            <option value="保護者へ">保護者へ</option>
+                                            <option value="部活動">部活動</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">本文内容 (URLを入力すると自動でリンク化されます)</label>
+                                    <textarea id="postContent" rows="4" required placeholder="お知らせの本文を入力してください... https://example.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand outline-none"></textarea>
+                                </div>
+                                <button type="submit" class="px-6 py-2.5 bg-brand hover:bg-brand-dark text-white font-bold rounded-lg shadow text-sm transition">
+                                    <i class="fa-solid fa-paper-plane mr-1"></i> 投稿を公開
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Posts List -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-list text-brand-gold"></i> 投稿済みお知らせ一覧
+                            </h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left text-gray-600">
+                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
+                                        <tr>
+                                            <th class="py-3 px-4">日付</th>
+                                            <th class="py-3 px-4">カテゴリ</th>
+                                            <th class="py-3 px-4">タイトル</th>
+                                            <th class="py-3 px-4 text-right">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminNewsList" class="divide-y divide-gray-100"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. TAB: ABOUT EDIT -->
+                    <div id="adminTab-about" class="admin-tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap text-brand-gold"></i> 校長あいさつ・校訓の編集
+                            </h3>
+                            <form onsubmit="saveAboutConfig(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">校長あいさつ 見出し</label>
+                                        <input type="text" id="edit-principal-title" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">校長名 / 役職</label>
+                                        <input type="text" id="edit-principal-name" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">校長メッセージ本文</label>
+                                    <textarea id="edit-principal-msg" rows="5" class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【自主】</label>
+                                        <textarea id="edit-creed-1" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【友愛】</label>
+                                        <textarea id="edit-creed-2" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">校訓【創造】</label>
+                                        <textarea id="edit-creed-3" rows="3" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                </div>
+
+                                <h4 class="font-bold text-brand border-b pb-2 pt-4">学校概要スペック</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">学校名</label>
+                                        <input type="text" id="edit-info-name" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">設置者</label>
+                                        <input type="text" id="edit-info-founder" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">生徒数</label>
+                                        <input type="text" id="edit-info-students" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">教職員数</label>
+                                        <input type="text" id="edit-info-staff" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">校歌フレーズ</label>
+                                    <input type="text" id="edit-info-song" class="w-full px-3 py-2 border rounded-lg text-sm">
+                                </div>
+
+                                <button type="submit" class="px-6 py-2.5 bg-brand text-white font-bold rounded-lg shadow text-sm hover:bg-brand-dark transition">
+                                    学校紹介ページの設定を保存
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- 3. TAB: EVENTS EDIT -->
+                    <div id="adminTab-events" class="admin-tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-plus text-brand-gold"></i> 年間学期概要 & 月間行事の追加
+                            </h3>
+
+                            <!-- Term overview -->
+                            <form onsubmit="saveTermsConfig(event)" class="space-y-3 pb-4 border-b">
+                                <h4 class="font-bold text-xs text-gray-700">学期別ハイライト概要</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600 mb-1">1学期 (4月〜7月)</label>
+                                        <textarea id="edit-term-1" rows="4" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600 mb-1">2学期 (8月〜12月)</label>
+                                        <textarea id="edit-term-2" rows="4" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600 mb-1">3学期 (1月〜3月)</label>
+                                        <textarea id="edit-term-3" rows="4" class="w-full px-3 py-2 border rounded-lg text-xs"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="px-4 py-2 bg-gray-800 text-white font-bold rounded text-xs">
+                                    学期概要を更新
+                                </button>
+                            </form>
+
+                            <!-- Add Event Form -->
+                            <form onsubmit="createEventItem(event)" class="space-y-3">
+                                <h4 class="font-bold text-xs text-gray-700">新しい月間行事の追加</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600">日付 (例: 5/20)</label>
+                                        <input type="text" id="eventDate" required class="w-full px-2.5 py-1.5 border rounded text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600">曜日 (例: 水)</label>
+                                        <input type="text" id="eventDay" required class="w-full px-2.5 py-1.5 border rounded text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600">行事名称</label>
+                                        <input type="text" id="eventTitle" required class="w-full px-2.5 py-1.5 border rounded text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600">対象</label>
+                                        <input type="text" id="eventTarget" required placeholder="全学年" class="w-full px-2.5 py-1.5 border rounded text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-semibold text-gray-600">備考</label>
+                                        <input type="text" id="eventNote" placeholder="特記事項" class="w-full px-2.5 py-1.5 border rounded text-xs">
+                                    </div>
+                                </div>
+                                <button type="submit" class="px-4 py-2 bg-brand text-white font-bold rounded text-xs hover:bg-brand-dark transition">
+                                    行事を追加登録
+                                </button>
+                            </form>
+
+                            <!-- Monthly Events List Table -->
+                            <div class="mt-4">
+                                <h4 class="font-bold text-xs text-gray-700 mb-2">登録中行事一覧</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs text-left text-gray-600">
+                                        <thead class="bg-gray-50 border-b">
+                                            <tr>
+                                                <th class="py-2 px-3">日付</th>
+                                                <th class="py-2 px-3">曜</th>
+                                                <th class="py-2 px-3">内容</th>
+                                                <th class="py-2 px-3">対象</th>
+                                                <th class="py-2 px-3">備考</th>
+                                                <th class="py-2 px-3 text-right">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="adminEventsTable" class="divide-y divide-gray-100"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. TAB: CLUBS EDIT -->
+                    <div id="adminTab-clubs" class="admin-tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-futbol text-brand-gold"></i> 部活動の追加・削除管理
+                            </h3>
+
+                            <form onsubmit="createClubItem(event)" class="space-y-4 bg-gray-50 p-4 rounded-lg">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">部活動名</label>
+                                        <input type="text" id="clubName" required placeholder="陸上競技部" class="w-full px-3 py-1.5 border rounded text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">区分</label>
+                                        <select id="clubCategory" class="w-full px-3 py-1.5 border rounded text-xs">
+                                            <option value="sports">運動部</option>
+                                            <option value="cultural">文化部</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">活動頻度・場所</label>
+                                        <input type="text" id="clubActivity" required placeholder="週4日 / グラウンド" class="w-full px-3 py-1.5 border rounded text-xs">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">活動紹介・方針</label>
+                                    <textarea id="clubDesc" rows="2" required placeholder="部活動の目標や雰囲気を記載..." class="w-full px-3 py-1.5 border rounded text-xs"></textarea>
+                                </div>
+                                <button type="submit" class="px-4 py-2 bg-brand text-white font-bold rounded text-xs hover:bg-brand-dark transition">
+                                    部活動を新規追加
+                                </button>
+                            </form>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                                <div>
+                                    <h4 class="font-bold text-xs text-brand mb-2">運動部 一覧</h4>
+                                    <div id="adminSportsClubsList" class="space-y-2"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-brand mb-2">文化部 一覧</h4>
+                                    <div id="adminCulturalClubsList" class="space-y-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. TAB: ACCESS EDIT -->
+                    <div id="adminTab-access" class="admin-tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                            <h3 class="text-lg font-bold text-brand border-b pb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-map-pin text-brand-gold"></i> アクセス・連絡先の編集
+                            </h3>
+                            <form onsubmit="saveAccessConfig(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">バス利用案内</label>
+                                    <input type="text" id="edit-access-bus" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">電車利用案内</label>
+                                    <input type="text" id="edit-access-train" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">お車・駐車場案内</label>
+                                    <input type="text" id="edit-access-car" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                </div>
+
+                                <h4 class="font-bold text-brand border-b pb-2 pt-3">連絡先・住所情報</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">住所</label>
+                                        <input type="text" id="edit-contact-address" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">電話番号</label>
+                                        <input type="text" id="edit-contact-tel" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 mb-1">FAX番号</label>
+                                        <input type="text" id="edit-contact-fax" class="w-full px-3 py-2 border rounded-lg text-xs">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="px-6 py-2.5 bg-brand text-white font-bold rounded-lg shadow text-sm hover:bg-brand-dark transition">
+                                    アクセス設定を保存
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white border-t border-brand-light mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <div>
+                    <h3 class="text-lg font-bold text-white tracking-wide" id="footer-school-name">緑ヶ丘市立 楠ヶ丘中学校</h3>
+                    <p class="text-xs text-emerald-200/80 mt-1" id="footer-school-contact">〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号 | TEL: 000-000-0000</p>
+                </div>
+                <div class="text-xs text-emerald-200/60">
+                    <p>&copy; Midorigaoka Municipal Kusugaoka Junior High School. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT & CANVAS LOGIC -->
+    <script>
+        // Default Sample Data Structure
+        const defaultSiteData = {
+            news: [
+                {
+                    id: 1,
+                    date: '2026.05.01',
+                    category: '全校行事',
+                    title: '令和8年度 第1回授業参観およびPTA総会のご案内',
+                    content: '5月18日(金)に授業参観およびPTA総会を実施いたします。保護者の皆様のご出席を心よりお待ちしております。\n\n詳細なプログラムおよび提出書類については、以下のリンクよりPDF資料をご確認ください。\nhttps://example.com/pta-guidance.pdf'
+                },
+                {
+                    id: 2,
+                    date: '2026.04.20',
+                    category: 'お知らせ',
+                    title: '【重要】クールビズ（軽装登校）の実施について',
+                    content: '5月7日(月)より夏季の軽装登校（クールビズ）期間といたします。各自体調管理に配慮した服装を心がけてください。'
+                }
+            ],
+            about: {
+                principalTitle: '「豊かな心と自立の志を育む」',
+                principalName: '第14代 校長  山田 太郎',
+                principalMsg: '緑ヶ丘市立楠ヶ丘中学校のホームページをご覧いただきありがとうございます。\n本校は創立以来、「自主・友愛・創造」の校訓のもと、地域に根ざした教育を推進してまいりました。変化の激しい現代社会において、自ら考え判断し、他者と協働して課題を解決する力を育むことが重要です。\n\n生徒一人ひとりが安心して学び、目標に向かって挑戦できる学校環境を整え、信頼される学校づくりを行ってまいります。',
+                creed1: '自ら目標を掲げ、主体的に考え行動し、自らの言動に責任を持つ態度を養います。',
+                creed2: '互いの個性を尊重し合い、思いやりの心を持って共に高め合う人間関係を築きます。',
+                creed3: '真理を求めて意欲的に学び、未来を切り拓く豊かな感性と創造力を培います。',
+                infoName: '緑ヶ丘市立 楠ヶ丘中学校',
+                infoFounder: '緑ヶ丘市教育委員会',
+                infoStudents: '全校生徒 450名（各学年 4学級・支援学級2）',
+                infoStaff: '35名',
+                infoSong: '作詞：緑ヶ丘 太郎 / 作曲：楠 華子（「緑の丘にそびえたつ 大楠の木のように…」）'
+            },
+            events: {
+                term1: '・4月: 入学式 / 始業式\n・5月: 修学旅行 (3年)\n・6月: 体育祭 / 期末テスト\n・7月: 中総体 / 終業式',
+                term2: '・8月: 始業式 / 実力テスト\n・9月: 合唱コンクール・文化祭\n・10月: 職場体験学習 (2年)\n・11月: 期末テスト / 三者面談',
+                term3: '・1月: 始業式 / 新入生説明会\n・2月: 学年末テスト\n・3月: 卒業証書授与式 / 修了式',
+                list: [
+                    { id: 101, date: '5/10', day: '金', title: '全校体力テスト', target: '全学年', note: '体操服着用' },
+                    { id: 102, date: '5/15', day: '水', title: '修学旅行事前学習', target: '3年生', note: '5-6時間目' },
+                    { id: 103, date: '5/22', day: '水', title: '生徒会総会', target: '全学年', note: '体育館にて実施' },
+                    { id: 104, date: '5/28', day: '火', title: '中間校内テスト (1日目)', target: '全学年', note: '部活動停止期間' }
+                ]
+            },
+            clubs: [
+                { id: 201, category: 'sports', name: 'サッカー部', activity: '活動: 週5日 / 平日・土曜', desc: '「県大会出場」を目指し、グラウンドで日々練習に励んでいます。チームワークとマナーを重視しています。', icon: 'fa-futbol', bg: 'bg-emerald-800' },
+                { id: 202, category: 'sports', name: 'バスケットボール部', activity: '活動: 週5日 / 体育館', desc: '男子・女子ともに体育館で基礎技術と素早いパスワークを磨いています。', icon: 'fa-basketball', bg: 'bg-amber-800' },
+                { id: 203, category: 'sports', name: '野球部', activity: '活動: 週5日 / 第1グラウンド', desc: '礼儀と声を大切にし、地区大会優勝を目標に日々白球を追いかけています。', icon: 'fa-baseball', bg: 'bg-teal-800' },
+                { id: 204, category: 'cultural', name: '吹奏楽部', activity: '活動: 週5日 / 音楽室', desc: 'コンクールでの金賞受賞、および地域・学校行事での演奏会に向けてアンサンブルを育んでいます。', icon: 'fa-music', bg: 'bg-purple-900' },
+                { id: 205, category: 'cultural', name: '美術・工芸部', activity: '活動: 週3日 / 美術室', desc: '絵画、立体工作、デジタルイラストなど多様な作品を制作し、文化祭等で展覧会を行っています。', icon: 'fa-paint-brush', bg: 'bg-rose-800' },
+                { id: 206, category: 'cultural', name: 'パソコン・科学部', activity: '活動: 週3日 / PC教室', desc: 'プログラミング、ロボット工作、科学実験など興味関心に応じた探究活動を行っています。', icon: 'fa-laptop-code', bg: 'bg-indigo-900' }
+            ],
+            access: {
+                bus: '緑ヶ丘市営バス「楠ヶ丘中学校前」バス停下車 徒歩1分',
+                train: '緑ヶ丘電鉄「楠ヶ丘駅」北口より徒歩約12分',
+                car: '敷地内に来客用駐車場（5台）がございます。正門よりお入りください。',
+                address: '〒000-0000 緑ヶ丘市楠ヶ丘1丁目2番3号',
+                tel: '電話番号: 000-000-0000',
+                fax: 'FAX番号: 000-000-0001'
+            }
+        };
+
+        // Global Dynamic State
+        let siteData = JSON.parse(localStorage.getItem('kusugaoka_full_data')) || defaultSiteData;
+        let isLoggedIn = false;
+
+        function saveSiteData() {
+            localStorage.setItem('kusugaoka_full_data', JSON.stringify(siteData));
+            renderAllPages();
+        }
+
+        // Helper: Convert URLs in plain text into clickable HTML links
+        function autoLink(text) {
+            if (!text) return '';
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function(url) {
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-brand font-bold underline hover:text-brand-accent break-all inline-flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>${url}</a>`;
+            });
+        }
+
+        // News Modal Trigger
+        function openNewsModal(id) {
+            const item = siteData.news.find(n => n.id === id);
+            if (!item) return;
+
+            document.getElementById('modalCategory').textContent = item.category;
+            document.getElementById('modalDate').textContent = item.date;
+            document.getElementById('modalTitle').textContent = item.title;
+            
+            const linkedContent = autoLink(item.content);
+            document.getElementById('modalContent').innerHTML = linkedContent;
+
+            document.getElementById('newsModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNewsModal() {
+            document.getElementById('newsModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeNewsModal();
+        });
+
+        // Init App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHeaderEmblem();
+            initHeroCanvas();
+            initCampusMapCanvas();
+            renderAllPages();
+        });
+
+        // Main Render Dispatcher
+        function renderAllPages() {
+            renderNewsHome();
+            renderAboutPage();
+            renderEventsPage();
+            renderClubsPage();
+            renderAccessPage();
+            
+            // Admin dynamic tables
+            if (isLoggedIn) {
+                renderNewsAdmin();
+                renderEventsAdmin();
+                renderClubsAdmin();
+            }
+        }
+
+        // Navigation SPA Switcher
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.page === pageId) {
+                    btn.classList.add('bg-brand-light');
+                } else {
+                    btn.classList.remove('bg-brand-light');
+                }
+            });
+
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (pageId === 'access') {
+                setTimeout(initCampusMapCanvas, 100);
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ================= PAGE RENDERERS =================
+
+        // Render About Page
+        function renderAboutPage() {
+            const a = siteData.about;
+            document.getElementById('view-principal-title').textContent = a.principalTitle;
+            document.getElementById('view-principal-name').textContent = a.principalName;
+            document.getElementById('view-principal-msg').textContent = a.principalMsg;
+
+            document.getElementById('view-creed-1').textContent = a.creed1;
+            document.getElementById('view-creed-2').textContent = a.creed2;
+            document.getElementById('view-creed-3').textContent = a.creed3;
+
+            document.getElementById('view-info-name').textContent = a.infoName;
+            document.getElementById('view-info-founder').textContent = a.infoFounder;
+            document.getElementById('view-info-students').textContent = a.infoStudents;
+            document.getElementById('view-info-staff').textContent = a.infoStaff;
+            document.getElementById('view-info-song').textContent = a.infoSong;
+
+            document.getElementById('footer-school-name').textContent = a.infoName;
+        }
+
+        // Render Events Page
+        function renderEventsPage() {
+            const e = siteData.events;
+            document.getElementById('view-term-1').textContent = e.term1;
+            document.getElementById('view-term-2').textContent = e.term2;
+            document.getElementById('view-term-3').textContent = e.term3;
+
+            const listContainer = document.getElementById('view-event-list');
+            if (listContainer) {
+                listContainer.innerHTML = e.list.map(ev => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4 font-bold">${ev.date}</td>
+                        <td class="py-3 px-4 text-blue-600 font-semibold">${ev.day}</td>
+                        <td class="py-3 px-4 font-medium text-gray-900">${ev.title}</td>
+                        <td class="py-3 px-4">${ev.target}</td>
+                        <td class="py-3 px-4 text-xs text-amber-600 font-medium">${ev.note || '-'}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Render Clubs Page
+        function renderClubsPage() {
+            const sportsList = siteData.clubs.filter(c => c.category === 'sports');
+            const culturalList = siteData.clubs.filter(c => c.category === 'cultural');
+
+            const sportsContainer = document.getElementById('view-sports-clubs');
+            if (sportsContainer) {
+                sportsContainer.innerHTML = sportsList.map(c => `
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                        <div class="h-28 ${c.bg || 'bg-emerald-800'} relative flex items-center justify-center text-white">
+                            <i class="fa-solid ${c.icon || 'fa-running'} text-4xl opacity-40"></i>
+                            <span class="absolute bottom-2 left-4 font-bold text-base">${c.name}</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <p class="text-xs text-gray-600">${c.desc}</p>
+                            <span class="inline-block text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">${c.activity}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const culturalContainer = document.getElementById('view-cultural-clubs');
+            if (culturalContainer) {
+                culturalContainer.innerHTML = culturalList.map(c => `
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                        <div class="h-28 ${c.bg || 'bg-purple-900'} relative flex items-center justify-center text-white">
+                            <i class="fa-solid ${c.icon || 'fa-palette'} text-4xl opacity-40"></i>
+                            <span class="absolute bottom-2 left-4 font-bold text-base">${c.name}</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <p class="text-xs text-gray-600">${c.desc}</p>
+                            <span class="inline-block text-[11px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded">${c.activity}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Render Access Page
+        function renderAccessPage() {
+            const acc = siteData.access;
+            document.getElementById('view-access-bus').textContent = acc.bus;
+            document.getElementById('view-access-train').textContent = acc.train;
+            document.getElementById('view-access-car').textContent = acc.car;
+
+            document.getElementById('view-contact-address').textContent = acc.address;
+            document.getElementById('view-contact-tel').textContent = acc.tel;
+            document.getElementById('view-contact-fax').textContent = acc.fax;
+
+            document.getElementById('footer-school-contact').textContent = `${acc.address} | ${acc.tel}`;
+        }
+
+        // News Home Feed
+        function renderNewsHome() {
+            const container = document.getElementById('homeNewsContainer');
+            if (!container) return;
+
+            if (siteData.news.length === 0) {
+                container.innerHTML = `<p class="text-gray-500 text-sm py-4">現在掲示中のお知らせはありません。</p>`;
+                return;
+            }
+
+            container.innerHTML = siteData.news.map(item => `
+                <div onclick="openNewsModal(${item.id})" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-brand hover:shadow-md transition cursor-pointer group relative">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-semibold text-gray-500"><i class="fa-regular fa-clock mr-1"></i>${item.date}</span>
+                            <span class="px-2.5 py-0.5 text-xs font-bold bg-brand/10 text-brand rounded-full">${item.category}</span>
+                        </div>
+                        <span class="text-xs font-semibold text-brand opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
+                            詳細を見る <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-base mb-2 group-hover:text-brand transition">${item.title}</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">${item.content}</p>
+                </div>
+            `).join('');
+        }
+
+        // ================= CANVASES =================
+
+        function renderHeaderEmblem() {
+            const canvas = document.getElementById('headerEmblemCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(25, 25, 22, 0, Math.PI * 2);
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(25, 25, 14, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#1b4d3e';
+            ctx.font = 'bold 16px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('楠', 25, 26);
+        }
+
+        function initHeroCanvas() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = Array.from({ length: 30 }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 4 + 2,
+                color: Math.random() > 0.4 ? 'rgba(42, 106, 87, 0.4)' : 'rgba(217, 119, 6, 0.3)',
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: Math.random() * 0.6 + 0.3,
+                angle: Math.random() * Math.PI * 2,
+                vAngle: (Math.random() - 0.5) * 0.02
+            }));
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const grad = ctx.createRadialGradient(
+                    canvas.width / 2, canvas.height / 2, 50,
+                    canvas.width / 2, canvas.height / 2, canvas.width
+                );
+                grad.addColorStop(0, '#1c4e3f');
+                grad.addColorStop(1, '#0f2922');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.angle += p.vAngle;
+
+                    if (p.y > canvas.height + 10) { p.y = -10; p.x = Math.random() * canvas.width; }
+                    if (p.x < -10) p.x = canvas.width + 10;
+                    if (p.x > canvas.width + 10) p.x = -10;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle);
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, p.radius * 2, p.radius, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        let mapHoveredBuilding = null;
+        function initCampusMapCanvas() {
+            const canvas = document.getElementById('campusMapCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const buildings = [
+                { id: 'main', name: '本校舎 (Main Building)', x: 180, y: 80, w: 440, h: 90, color: '#1b4d3e', desc: '普通教室・職員室・図書室' },
+                { id: 'gym', name: '体育館 (Gymnasium)', x: 80, y: 220, w: 180, h: 130, color: '#d97706', desc: 'アリーナ・武道場' },
+                { id: 'ground', name: '第1グラウンド (Ground)', x: 300, y: 210, w: 320, h: 150, color: '#a7f3d0', desc: '陸上トラック・サッカー場', textColor: '#064e3b' },
+                { id: 'club', name: '部活動部室棟', x: 650, y: 120, w: 100, h: 220, color: '#2a6a57', desc: '部室・倉庫' }
+            ];
+
+            function drawMap() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#f0fdf4';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#e5e7eb';
+                ctx.fillRect(50, 180, 700, 20);
+                ctx.fillRect(270, 80, 20, 260);
+
+                ctx.fillStyle = '#4b5563';
+                ctx.fillRect(40, 170, 10, 40);
+
+                buildings.forEach(b => {
+                    const isHovered = mapHoveredBuilding === b.id;
+                    ctx.save();
+                    ctx.fillStyle = b.color;
+                    ctx.shadowBlur = isHovered ? 12 : 4;
+                    ctx.beginPath();
+                    ctx.roundRect(b.x, b.y, b.w, b.h, 8);
+                    ctx.fill();
+
+                    if (isHovered) {
+                        ctx.strokeStyle = '#f59e0b';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                    }
+
+                    ctx.fillStyle = b.textColor || '#ffffff';
+                    ctx.font = 'bold 14px "Noto Sans JP"';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(b.name, b.x + b.w/2, b.y + b.h/2);
+                    ctx.restore();
+                });
+
+                if (mapHoveredBuilding) {
+                    const target = buildings.find(b => b.id === mapHoveredBuilding);
+                    if (target) {
+                        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+                        ctx.beginPath();
+                        ctx.roundRect(target.x + 10, target.y - 35, 220, 30, 6);
+                        ctx.fill();
+
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '12px "Noto Sans JP"';
+                        ctx.textAlign = 'left';
+                        ctx.fillText(`📍 ${target.desc}`, target.x + 20, target.y - 15);
+                    }
+                }
+            }
+
+            canvas.onmousemove = (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const mx = (e.clientX - rect.left) * scaleX;
+                const my = (e.clientY - rect.top) * scaleY;
+
+                let found = null;
+                buildings.forEach(b => {
+                    if (mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {
+                        found = b.id;
+                    }
+                });
+
+                if (mapHoveredBuilding !== found) {
+                    mapHoveredBuilding = found;
+                    drawMap();
+                }
+            };
+
+            canvas.onmouseleave = () => {
+                mapHoveredBuilding = null;
+                drawMap();
+            };
+
+            drawMap();
+        }
+
+        // ================= ADMIN & INTEGRATED CONTENT EDITING =================
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add('bg-brand', 'text-white');
+                    btn.classList.remove('bg-gray-100', 'text-gray-700');
+                } else {
+                    btn.classList.remove('bg-brand', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-gray-700');
+                }
+            });
+
+            document.querySelectorAll('.admin-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`adminTab-${tabName}`).classList.remove('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (user === 'teacher' && pass === 'Miyama2026') {
+                isLoggedIn = true;
+                document.getElementById('adminLoginBox').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                document.getElementById('logoutBtn').classList.remove('hidden');
+                document.getElementById('resetDataBtn').classList.remove('hidden');
+                errorEl.classList.add('hidden');
+
+                // Fill Admin Form Inputs with current state values
+                populateAdminForms();
+                renderAllPages();
+            } else {
+                errorEl.textContent = 'ユーザー名またはパスワードが違います。';
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isLoggedIn = false;
+            document.getElementById('adminLoginBox').classList.remove('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+            document.getElementById('resetDataBtn').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+        }
+
+        function resetAllData() {
+            if (confirm('すべてのカスタマイズ変更を初期設定に復元しますか？')) {
+                siteData = JSON.parse(JSON.stringify(defaultSiteData));
+                saveSiteData();
+                populateAdminForms();
+                alert('初期データに復元しました。');
+            }
+        }
+
+        function populateAdminForms() {
+            // About Inputs
+            const a = siteData.about;
+            document.getElementById('edit-principal-title').value = a.principalTitle;
+            document.getElementById('edit-principal-name').value = a.principalName;
+            document.getElementById('edit-principal-msg').value = a.principalMsg;
+
+            document.getElementById('edit-creed-1').value = a.creed1;
+            document.getElementById('edit-creed-2').value = a.creed2;
+            document.getElementById('edit-creed-3').value = a.creed3;
+
+            document.getElementById('edit-info-name').value = a.infoName;
+            document.getElementById('edit-info-founder').value = a.infoFounder;
+            document.getElementById('edit-info-students').value = a.infoStudents;
+            document.getElementById('edit-info-staff').value = a.infoStaff;
+            document.getElementById('edit-info-song').value = a.infoSong;
+
+            // Events Terms
+            const e = siteData.events;
+            document.getElementById('edit-term-1').value = e.term1;
+            document.getElementById('edit-term-2').value = e.term2;
+            document.getElementById('edit-term-3').value = e.term3;
+
+            // Access Inputs
+            const acc = siteData.access;
+            document.getElementById('edit-access-bus').value = acc.bus;
+            document.getElementById('edit-access-train').value = acc.train;
+            document.getElementById('edit-access-car').value = acc.car;
+
+            document.getElementById('edit-contact-address').value = acc.address;
+            document.getElementById('edit-contact-tel').value = acc.tel;
+            document.getElementById('edit-contact-fax').value = acc.fax;
+        }
+
+        // SAVE FORM HANDLERS
+
+        function saveAboutConfig(e) {
+            e.preventDefault();
+            siteData.about = {
+                principalTitle: document.getElementById('edit-principal-title').value,
+                principalName: document.getElementById('edit-principal-name').value,
+                principalMsg: document.getElementById('edit-principal-msg').value,
+                creed1: document.getElementById('edit-creed-1').value,
+                creed2: document.getElementById('edit-creed-2').value,
+                creed3: document.getElementById('edit-creed-3').value,
+                infoName: document.getElementById('edit-info-name').value,
+                infoFounder: document.getElementById('edit-info-founder').value,
+                infoStudents: document.getElementById('edit-info-students').value,
+                infoStaff: document.getElementById('edit-info-staff').value,
+                infoSong: document.getElementById('edit-info-song').value
+            };
+            saveSiteData();
+            alert('学校紹介の情報を更新しました。');
+        }
+
+        function saveTermsConfig(e) {
+            e.preventDefault();
+            siteData.events.term1 = document.getElementById('edit-term-1').value;
+            siteData.events.term2 = document.getElementById('edit-term-2').value;
+            siteData.events.term3 = document.getElementById('edit-term-3').value;
+            saveSiteData();
+            alert('学期概要を更新しました。');
+        }
+
+        function saveAccessConfig(e) {
+            e.preventDefault();
+            siteData.access = {
+                bus: document.getElementById('edit-access-bus').value,
+                train: document.getElementById('edit-access-train').value,
+                car: document.getElementById('edit-access-car').value,
+                address: document.getElementById('edit-contact-address').value,
+                tel: document.getElementById('edit-contact-tel').value,
+                fax: document.getElementById('edit-contact-fax').value
+            };
+            saveSiteData();
+            alert('アクセス・連絡先情報を更新しました。');
+        }
+
+        // DYNAMIC ITEMS CREATION & DELETION
+
+        // News
+        function renderNewsAdmin() {
+            const container = document.getElementById('adminNewsList');
+            if (!container) return;
+
+            container.innerHTML = siteData.news.map(item => `
+                <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 font-mono text-xs">${item.date}</td>
+                    <td class="py-3 px-4"><span class="px-2 py-0.5 text-xs font-bold bg-brand/10 text-brand rounded">${item.category}</span></td>
+                    <td class="py-3 px-4 font-bold text-gray-800 cursor-pointer hover:text-brand" onclick="openNewsModal(${item.id})">${item.title}</td>
+                    <td class="py-3 px-4 text-right">
+                        <button onclick="deleteNewsPost(${item.id})" class="px-2.5 py-1 bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold rounded transition">
+                            <i class="fa-solid fa-trash mr-1"></i> 削除
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function createNewsPost(e) {
+            e.preventDefault();
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+
+            siteData.news.unshift({
+                id: Date.now(),
+                date: dateStr,
+                category: document.getElementById('postCategory').value,
+                title: document.getElementById('postTitle').value,
+                content: document.getElementById('postContent').value
+            });
+
+            saveSiteData();
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            alert('新しいお知らせを公開しました。');
+        }
+
+        function deleteNewsPost(id) {
+            if (confirm('このお知らせを削除しますか？')) {
+                siteData.news = siteData.news.filter(item => item.id !== id);
+                saveSiteData();
+            }
+        }
+
+        // Events
+        function renderEventsAdmin() {
+            const container = document.getElementById('adminEventsTable');
+            if (!container) return;
+
+            container.innerHTML = siteData.events.list.map(ev => `
+                <tr class="hover:bg-gray-50">
+                    <td class="py-2 px-3 font-bold">${ev.date}</td>
+                    <td class="py-2 px-3">${ev.day}</td>
+                    <td class="py-2 px-3 font-semibold">${ev.title}</td>
+                    <td class="py-2 px-3">${ev.target}</td>
+                    <td class="py-2 px-3 text-gray-500">${ev.note || '-'}</td>
+                    <td class="py-2 px-3 text-right">
+                        <button onclick="deleteEventItem(${ev.id})" class="text-red-600 hover:underline text-xs font-bold">削除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function createEventItem(e) {
+            e.preventDefault();
+            siteData.events.list.push({
+                id: Date.now(),
+                date: document.getElementById('eventDate').value,
+                day: document.getElementById('eventDay').value,
+                title: document.getElementById('eventTitle').value,
+                target: document.getElementById('eventTarget').value,
+                note: document.getElementById('eventNote').value
+            });
+            saveSiteData();
+            document.getElementById('eventDate').value = '';
+            document.getElementById('eventDay').value = '';
+            document.getElementById('eventTitle').value = '';
+            document.getElementById('eventTarget').value = '';
+            document.getElementById('eventNote').value = '';
+        }
+
+        function deleteEventItem(id) {
+            siteData.events.list = siteData.events.list.filter(ev => ev.id !== id);
+            saveSiteData();
+        }
+
+        // Clubs
+        function renderClubsAdmin() {
+            const sportsContainer = document.getElementById('adminSportsClubsList');
+            const culturalContainer = document.getElementById('adminCulturalClubsList');
+
+            if (sportsContainer) {
+                sportsContainer.innerHTML = siteData.clubs.filter(c => c.category === 'sports').map(c => `
+                    <div class="p-2 border rounded flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-bold text-gray-800">${c.name}</p>
+                            <p class="text-[10px] text-gray-500">${c.activity}</p>
+                        </div>
+                        <button onclick="deleteClubItem(${c.id})" class="text-red-600 hover:underline font-bold">削除</button>
+                    </div>
+                `).join('');
+            }
+
+            if (culturalContainer) {
+                culturalContainer.innerHTML = siteData.clubs.filter(c => c.category === 'cultural').map(c => `
+                    <div class="p-2 border rounded flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-bold text-gray-800">${c.name}</p>
+                            <p class="text-[10px] text-gray-500">${c.activity}</p>
+                        </div>
+                        <button onclick="deleteClubItem(${c.id})" class="text-red-600 hover:underline font-bold">削除</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function createClubItem(e) {
+            e.preventDefault();
+            const cat = document.getElementById('clubCategory').value;
+            siteData.clubs.push({
+                id: Date.now(),
+                category: cat,
+                name: document.getElementById('clubName').value,
+                activity: document.getElementById('clubActivity').value,
+                desc: document.getElementById('clubDesc').value,
+                icon: cat === 'sports' ? 'fa-running' : 'fa-palette',
+                bg: cat === 'sports' ? 'bg-emerald-800' : 'bg-purple-900'
+            });
+
+            saveSiteData();
+            document.getElementById('clubName').value = '';
+            document.getElementById('clubActivity').value = '';
+            document.getElementById('clubDesc').value = '';
+        }
+
+        function deleteClubItem(id) {
+            siteData.clubs = siteData.clubs.filter(c => c.id !== id);
+            saveSiteData();
+        }
+    </script>
+</body>
+</html>
